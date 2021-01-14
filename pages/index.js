@@ -13,7 +13,8 @@ const Index = (props) =>{
         <title>{props.title}</title>
         </Head>
 
-        <h1> We will be dropping with a bang! Come back later...</h1>
+        <h1 className=" transition "> We will be dropping with a bang! Come back later...</h1>
+        <button className = " transitiion duration-1000 ease-out"> Yea!</button>
         </>
 
     );
