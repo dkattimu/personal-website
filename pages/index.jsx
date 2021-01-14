@@ -16,13 +16,16 @@ const Index = (props) => {
       <Nav></Nav>
 
       <div className='page-container'>
-        <h1 className=' bg-teal-500 text-purple-500'>
+        <h1 className='text-purple-500'>
           We will be dropping with a bang! Come back later...
         </h1>
-      </div>
 
-      <div>
-        <button className=' transitiion duration-1000 ease-out'> Yea!</button>
+        <div className=' flex justify-left items-center my-10'>
+          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-red-400 mx-10'></div>
+          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-yellow-400 mx-20'></div>
+          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-green-600 mx-10'></div>
+          <div className='inline-block animate-ping ease duration-100 w-20 h-20 bg-green-800 mx-20'></div>
+        </div>
       </div>
     </>
   );

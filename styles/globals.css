@@ -27,9 +27,28 @@ div {
 
 .nav-blue {
   display: 'block';
-  @apply flex justify-center bg-blue-500 rounded text-white mx-10  py-1 w-24;
+  @apply flex justify-center bg-blue-500 rounded text-white mx-5  py-1 w-24;
 }
 
 .page-container {
   @apply m-10;
+}
+
+.heading1 {
+  @apply bg-blue-100;
+}
+
+/* Animation */
+
+.animate-spinx {
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
