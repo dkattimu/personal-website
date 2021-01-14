@@ -1,4 +1,4 @@
 {
-    "exclude": ".next",
-    "watch": ["pages"]
+  "exclude": ".next",
+  "watch": ["pages"]
 }

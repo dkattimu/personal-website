@@ -1,17 +1,21 @@
 module.exports = {
-  purge:  ['./pages/**/*.js', './components/**/*.js'],
+  purge: ['./pages/**/*.js', './components/**/*.js'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {},
-    transitionDuration: {
-        DEFAULT: '150ms',
+    container: {
+      center: true,
     },
-    transitionTimingFunction:{
-        DEFAULT: 'cubic-bezier(0.4,0,0.2,1)',
-    }
+
+    transitionDuration: {
+      DEFAULT: '150ms',
+    },
+    transitionTimingFunction: {
+      DEFAULT: 'cubic-bezier(0.4,0,0.2,1)',
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
