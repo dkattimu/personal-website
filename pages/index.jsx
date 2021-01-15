@@ -20,11 +20,11 @@ const Index = (props) => {
           We will be dropping with a bang! Come back later...
         </h1>
 
-        <div className=' flex justify-left items-center my-10'>
-          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-red-400 mx-10'></div>
-          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-yellow-400 mx-20'></div>
-          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-green-600 mx-10'></div>
-          <div className='inline-block animate-ping ease duration-100 w-20 h-20 bg-green-800 mx-20'></div>
+        <div className=' flex flex-wrap justify-left items-center my-10 mx-0'>
+          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-red-400 m-10'></div>
+          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-yellow-400 m-10'></div>
+          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-green-600 m-10'></div>
+          <div className='inline-block animate-ping ease duration-100 w-10 h-10 bg-green-800 m-10'></div>
         </div>
       </div>
     </>
