@@ -1,10 +1,15 @@
 import Head from 'next/head';
 import Nav from '../components/nav';
+import FAAnimation from '../components/fa-animation';
+import TWAnimation from '../components/tw-animation';
+import Footer from '../components/footer';
+import matter from 'gray-matter';
 //import styles from '../styles/Home.module.css'
 //import '../styles/globals.css'
+//import { fs as fs1 } from 'fs';
 
 const Index = (props) => {
-  console.log(`Index -> ${props}`);
+  console.log(`Index -> ${JSON.stringify(props)}`);
   return (
     <>
       <Head>
@@ -13,62 +18,36 @@ const Index = (props) => {
         <meta name='Description' content={props.description}></meta>
         <title>{props.title}</title>
       </Head>
-      <Nav></Nav>
+      <Nav />
 
-      <div className='page-container'>
-        <h1 className='text-purple-500'>
-          We will be dropping with a bang! Come back later...
-        </h1>
-
-        <div className=' flex flex-wrap justify-left items-center my-10 mx-0'>
-          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-red-400 m-10'></div>
-          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-yellow-400 m-10'></div>
-          <div className='inline-block animate-spin ease duration-300 w-20 h-20 bg-green-600 m-10'></div>
-          <div className='inline-block animate-ping ease duration-100 w-10 h-10 bg-green-800 m-10'></div>
+      <div className='page-container '>
+        <div className='flex-grow'>
+          <span className=' flex justify-center text-1xl font-bold text-teal-600'>
+            I am building; Do check back here later...
+          </span>
+          <TWAnimation />
+          <FAAnimation />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
-
 export default Index;
-/*const  getStaticProps = async () =>{
-    const siteData = await import(`../config.json`);
-
-    return {
-        props:{
-            title: siteData.default.title,
-            description: siteData.default.description
-        }
-    };
-
-}*/
-
-/*const Home= ()=> {
-    return (
-      <div className='md:flex bg-white rounded-lg p-24 justify-center'>
-        <img
-          className='h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6'
-          src='<https://pbs.twimg.com/profile_images/1102120097081184257/61tO47TQ_400x400.jpg>'
-        />
-        <div className='text-center md:text-left'>
-          <h2 className='text-lg'>Jake Prins</h2>
-          <div className='text-purple-500'>JavaScript developer</div>
-          <div className='text-gray-600'>Twitter: @jakeprins_nl</div>
-          <div className='text-gray-600'>www.jakeprins.com</div>
-        </div>
-      </div>
-    );
-  }
-
- module.exports= Home;
- */
 
 export async function getStaticProps() {
   const siteData = await import(`../config.json`);
-
+  const fs = require('fs');
+  const files = fs.readdirSync(`${process.cwd()}/content`, 'utf-8');
+  const blogs = files.filter((file) => file.endsWith('.md'));
+  const data = blogs.map((blog) => {
+    const path = `${process.cwd()}/content/${blog}`;
+    const content = fs.readFileSync(path, { encoding: 'utf-8' });
+    return content;
+  });
   return {
     props: {
+      data: data,
       title: siteData.default.title,
       description: siteData.default.description,
     },
