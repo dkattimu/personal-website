@@ -10,7 +10,7 @@ import {
 
 const FAAnimation = () => {
   return (
-    <div className='flex flex-wrap justify-center inline-block'>
+    <div className='flex flex-wrap justify-center '>
       <FontAwesomeIcon
         icon={faCog}
         size='5x'

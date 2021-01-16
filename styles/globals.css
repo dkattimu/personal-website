@@ -30,11 +30,11 @@ div {
 }
 
 .nav-blue {
-  @apply text-center bg-blue-500 rounded text-white m-0 px-0 py-0 w-24;
+  @apply text-center bg-blue-500 rounded text-white mx-0 my-1 p-0  w-24;
 }
 
 .nav-teal {
-  @apply flex justify-center text-center bg-teal-600 rounded text-white m-0 py-1 w-24;
+  @apply flex justify-center text-center bg-teal-600 rounded text-white mr-0 ml-0 mt-1 mb-1 py-1 w-24;
 }
 
 .page-container {
