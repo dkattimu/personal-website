@@ -12,34 +12,7 @@ import {
 import { useEffect, useState } from 'react';
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
-const nonHomeStyle = {
-  display: 'flex',
-  marginLeft: '0rem',
-  paddingLeft: '0rem',
-};
-const NonHomeNav = () => {
-  return (
-    <div className='nav-contianer-non-home'>
-      <Link href='/'>
-        <a className='nav-blue'>
-          <FontAwesomeIcon icon={faBlog} /> Blog
-        </a>
-      </Link>
 
-      <Link href='/'>
-        <a className='nav-blue'>
-          <FontAwesomeIcon icon={faTasks} /> Research
-        </a>
-      </Link>
-
-      <Link href='/'>
-        <a className='nav-blue'>
-          <FontAwesomeIcon icon={faInfo} /> About
-        </a>
-      </Link>
-    </div>
-  );
-};
 //TODO : Toggle is updating one at a time. Should all be updated at once
 const toggleView = (showHiddenNavs) => {
   const navEltsInVis = document.getElementsByClassName('nav-blue');
@@ -72,9 +45,9 @@ const Nav = () => {
     //showHiddenNavs = false;
     toggleHiddenNavs();
     if (showHiddenNavs) {
-      alert('Showing Hidden Navs');
+      console.log('Showing Hidden Navs');
     } else {
-      alert('Not Showing Hidden Navs');
+      console.log('Not Showing Hidden Navs');
     }
     //setShowHiddenNavs(!showHiddenNavs);
   }, []);

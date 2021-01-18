@@ -22,7 +22,10 @@ const Index = (props) => {
 
       <div className='page-container'>
         <div className='flex-col'>
-          <h2>I am building; do check back here later...</h2>
+          <h2>
+            {' '}
+            Welcome to the landing page; contents will be dropping soon!...
+          </h2>
 
           <FAAnimation />
         </div>
