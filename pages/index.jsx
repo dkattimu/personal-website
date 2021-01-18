@@ -20,11 +20,9 @@ const Index = (props) => {
       </Head>
       <Nav />
 
-      <div className='page-container '>
-        <div className='flex-grow'>
-          <span className=' flex justify-left text-1xl font-bold text-teal-600'>
-            I am building; do check back here later...
-          </span>
+      <div className='page-container'>
+        <div className='flex-col'>
+          <h2>I am building; do check back here later...</h2>
 
           <FAAnimation />
         </div>

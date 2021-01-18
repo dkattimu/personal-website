@@ -20,9 +20,10 @@ const FAAnimation = () => {
         //className='inline-block m-10 fill-current text-red-400'
         style={{
           display: 'inline-block',
-          margin: '1rem',
+          marginTop: '2rem',
+          MarginBotton: '2rem',
           marginLeft: '0rem',
-          marginRight: '2rem',
+          marginRight: '4rem',
         }}
       />
       <FontAwesomeIcon
@@ -33,9 +34,10 @@ const FAAnimation = () => {
         //className='inline-block m-10 fill-current text-yellow-400'
         style={{
           display: 'inline-block',
-          margin: '1rem',
+          marginTop: '2rem',
+          MarginBotton: '2rem',
           marginLeft: '0rem',
-          marginRight: '2rem',
+          marginRight: '4rem',
         }}
       />
       <FontAwesomeIcon
@@ -46,9 +48,10 @@ const FAAnimation = () => {
         //className='inline-block m-10 fill-current text-green-400'
         style={{
           display: 'inline-block',
-          margin: '1rem',
+          marginTop: '2rem',
+          MarginBotton: '2rem',
           marginLeft: '0rem',
-          marginRight: '2rem',
+          marginRight: '4rem',
         }}
       />
       <FontAwesomeIcon
@@ -60,7 +63,8 @@ const FAAnimation = () => {
         //className='inline-block m-10 fill-current text-teal-400'
         style={{
           display: 'inline-block',
-          margin: '1rem',
+          marginTop: '2rem',
+          MarginBotton: '2rem',
           marginLeft: '0rem',
           marginRight: '2rem',
         }}
