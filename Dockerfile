@@ -19,6 +19,7 @@ RUN echo ZSH_THEME=\'agnoster\' >> ~/.zshrc
 #use dnf as that is more straightforward
 RUN yum install -y nodejs
 # research do we have to create folder first
-WORKDIR /usr/website/
+ENV DIRPATH /usr/website/
+WORKDIR ${DIRPATH}
 # is this use of work dir valid?
-VOLUME /usr/projects/personal-site/site-app: WORKDIR
+VOLUME /usr/projects/personal-site/site-app: ${DIRPATH}

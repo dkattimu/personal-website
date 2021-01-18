@@ -1,3 +1,4 @@
+import 'tailwindcss/tailwind.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSpinner,
@@ -15,25 +16,33 @@ const FAAnimation = () => {
         icon={faCog}
         size='5x'
         spin
-        className='inline-block m-10 fill-current text-red-400'
+        color='red'
+        //className='inline-block m-10 fill-current text-red-400'
+        style={{ display: 'inline-block', margin: '1rem', marginLeft: '0rem' }}
       />
       <FontAwesomeIcon
         icon={faAtom}
         size='5x'
         spin
-        className='inline-block m-10 fill-current text-yellow-400'
+        color='yellow'
+        //className='inline-block m-10 fill-current text-yellow-400'
+        style={{ display: 'inline-block', margin: '1rem' }}
       />
       <FontAwesomeIcon
         icon={faSync}
         size='5x'
         spin
-        className='inline-block m-10 fill-current text-green-400'
+        color='green'
+        //className='inline-block m-10 fill-current text-green-400'
+        style={{ display: 'inline-block', margin: '1rem' }}
       />
       <FontAwesomeIcon
         icon={faUserClock}
         size='5x'
-        flash
-        className='inline-block m-10 fill-current text-teal-400'
+        color='teal'
+        //flash
+        //className='inline-block m-10 fill-current text-teal-400'
+        style={{ display: 'inline-block', margin: '1rem' }}
       />
     </div>
   );
