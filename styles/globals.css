@@ -44,6 +44,9 @@ div {
   @apply visible p-0 m-0 md:invisible md:pt-1 md:pb-1 justify-center fill-current text-gray-400;
 }
 
+.fa-animation {
+  @apply flex flex-col md:flex-row;
+}
 .page-container {
   @apply flex h-screen m-10;
 }

@@ -5,20 +5,25 @@ import {
   faCog,
   faUserClock,
   faAtom,
-  faUserCog,
+  faCogs,
   faSync,
 } from '@fortawesome/free-solid-svg-icons';
 
 const FAAnimation = () => {
   return (
-    <div className='flex flex-wrap justify-center '>
+    <div className='fa-animation'>
       <FontAwesomeIcon
-        icon={faCog}
+        icon={faCogs}
         size='5x'
         spin
         color='red'
         //className='inline-block m-10 fill-current text-red-400'
-        style={{ display: 'inline-block', margin: '1rem', marginLeft: '0rem' }}
+        style={{
+          display: 'inline-block',
+          margin: '1rem',
+          marginLeft: '0rem',
+          marginRight: '2rem',
+        }}
       />
       <FontAwesomeIcon
         icon={faAtom}
@@ -26,23 +31,39 @@ const FAAnimation = () => {
         spin
         color='yellow'
         //className='inline-block m-10 fill-current text-yellow-400'
-        style={{ display: 'inline-block', margin: '1rem' }}
+        style={{
+          display: 'inline-block',
+          margin: '1rem',
+          marginLeft: '0rem',
+          marginRight: '2rem',
+        }}
       />
       <FontAwesomeIcon
-        icon={faSync}
+        icon={faCog}
         size='5x'
         spin
         color='green'
         //className='inline-block m-10 fill-current text-green-400'
-        style={{ display: 'inline-block', margin: '1rem' }}
+        style={{
+          display: 'inline-block',
+          margin: '1rem',
+          marginLeft: '0rem',
+          marginRight: '2rem',
+        }}
       />
       <FontAwesomeIcon
-        icon={faUserClock}
+        icon={faSync}
         size='5x'
         color='teal'
+        spin
         //flash
         //className='inline-block m-10 fill-current text-teal-400'
-        style={{ display: 'inline-block', margin: '1rem' }}
+        style={{
+          display: 'inline-block',
+          margin: '1rem',
+          marginLeft: '0rem',
+          marginRight: '2rem',
+        }}
       />
     </div>
   );

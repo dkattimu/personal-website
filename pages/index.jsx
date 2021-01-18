@@ -22,10 +22,10 @@ const Index = (props) => {
 
       <div className='page-container '>
         <div className='flex-grow'>
-          <span className=' flex justify-center text-1xl font-bold text-teal-600'>
+          <span className=' flex justify-left text-1xl font-bold text-teal-600'>
             I am building; Do check back here later...
           </span>
-          <TWAnimation />
+
           <FAAnimation />
         </div>
       </div>

@@ -1,6 +1,13 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faHome } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faHome,
+  faBlog,
+  faTasks,
+  faInfo,
+} from '@fortawesome/free-solid-svg-icons';
+
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
 const Nav = () => {
@@ -14,15 +21,21 @@ const Nav = () => {
         </Link>
 
         <Link href='/'>
-          <a className='nav-blue'>Blog</a>
+          <a className='nav-blue'>
+            <FontAwesomeIcon icon={faBlog} /> Blog
+          </a>
         </Link>
 
         <Link href='/'>
-          <a className='nav-blue'>Research</a>
+          <a className='nav-blue'>
+            <FontAwesomeIcon icon={faTasks} /> Research
+          </a>
         </Link>
 
         <Link href='/'>
-          <a className='nav-blue'>About</a>
+          <a className='nav-blue'>
+            <FontAwesomeIcon icon={faInfo} /> About
+          </a>
         </Link>
         <Link href='/'>
           <FontAwesomeIcon icon={faBars} size='2x' className='nav-fa-bar' />
