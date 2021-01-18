@@ -6,7 +6,7 @@ html,
 body {
   /*padding: 1rem;
   margin: 1rem;*/
-  @apply bg-gray-100 dark:bg-gray-800 dark:text-white m-0 p-1;
+  @apply bg-gray-300 dark:bg-gray-800 dark:text-white m-0 p-1;
 
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -26,7 +26,7 @@ div {
 }
 
 .nav-container {
-  @apply flex flex-col md:flex-row md:justify-between bg-gray-50 dark:bg-gray-800 p-0 rounded;
+  @apply flex flex-col md:flex-row md:justify-between bg-gray-300 dark:bg-gray-800 p-0 rounded;
 }
 
 .nav-blue-always-visible {
@@ -52,7 +52,7 @@ div {
 }
 
 .page-footer {
-  @apply flex justify-center text-xs p-1 bg-gray-300 dark:bg-gray-700 rounded;
+  @apply flex justify-center text-xs p-1 bg-gray-200 dark:bg-gray-700 rounded;
 }
 
 .heading1 {
