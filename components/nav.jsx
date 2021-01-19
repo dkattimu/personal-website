@@ -13,45 +13,29 @@ import { useEffect, useState } from 'react';
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
 
-//TODO : Toggle is updating one at a time. Should all be updated at once
-const toggleView = (showHiddenNavs) => {
-  const navEltsInVis = document.getElementsByClassName('nav-blue');
-  const navEltsVis = document.getElementsByClassName('nav-blue-always-visible');
-  /* navElts.map((elt) => {
-    //elt.setAttribute('class', 'nav-blue-always-visible');
-    alert(JSON.stringify(elt.toString()));
-  });*/
-  if (navEltsInVis.length > 0) {
-    for (let i = 0; i < navEltsInVis.length; i++) {
-      navEltsInVis[i].setAttribute('class', 'nav-blue-always-visible');
-    }
-  }
-  /*
-  if (navEltsVis.length > 0)
-    for (let i = 0; i < navEltsVis.length; i++) {
-      navEltsVis[i].setAttribute('class', 'nav-blue');
-    }*/
-};
+const hiddenCSSCls = 'nav-blue-hidden-wide';
+const visibleCSSCls = 'nav-blue';
+const alwaysVisibleCSSCls = 'nav-blue-always-visible';
 const listHiddenNavs = [
   <Link href='/'>
-    <a className='nav-blue-sometimes-visible'>
+    <a className={hiddenCSSCls}>
       <FontAwesomeIcon icon={faBlog} /> Blog
     </a>
   </Link>,
   <Link href='/'>
-    <a className='nav-blue-sometimes-visible'>
+    <a className={hiddenCSSCls}>
       <FontAwesomeIcon icon={faUserCog} /> Projects
     </a>
   </Link>,
 
   <Link href='/'>
-    <a className='nav-blue-sometimes-visible'>
+    <a className={hiddenCSSCls}>
       <FontAwesomeIcon icon={faTasks} /> Research
     </a>
   </Link>,
 
   <Link href='/'>
-    <a className='nav-blue-sometimes-visible'>
+    <a className={hiddenCSSCls}>
       <FontAwesomeIcon icon={faInfo} /> About
     </a>
   </Link>,
@@ -83,30 +67,30 @@ const Nav = () => {
     >
       <div className='nav-container '>
         <Link href='/'>
-          <a className='nav-blue-always-visible'>
+          <a className={alwaysVisibleCSSCls}>
             <FontAwesomeIcon icon={faHome} /> Home
           </a>
         </Link>
 
         <Link href='/'>
-          <a className='nav-blue'>
+          <a className={visibleCSSCls}>
             <FontAwesomeIcon icon={faBlog} /> Blog
           </a>
         </Link>
         <Link href='/'>
-          <a className='nav-blue'>
+          <a className={visibleCSSCls}>
             <FontAwesomeIcon icon={faUserCog} /> Projects
           </a>
         </Link>
 
         <Link href='/'>
-          <a className='nav-blue'>
+          <a className={visibleCSSCls}>
             <FontAwesomeIcon icon={faTasks} /> Research
           </a>
         </Link>
 
         <Link href='/'>
-          <a className='nav-blue'>
+          <a className={visibleCSSCls}>
             <FontAwesomeIcon icon={faInfo} /> About
           </a>
         </Link>

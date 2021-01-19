@@ -37,7 +37,7 @@ div {
   @apply flex text-center items-center justify-center bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24;
 }
 
-.nav-blue-sometimes-visible {
+.nav-blue-hidden-wide {
   @apply flex text-center items-center justify-center bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24 md:hidden;
 }
 
