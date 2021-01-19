@@ -32,7 +32,30 @@ const toggleView = (showHiddenNavs) => {
       navEltsVis[i].setAttribute('class', 'nav-blue');
     }*/
 };
+const listHiddenNavs = [
+  <Link href='/'>
+    <a className='nav-blue-sometimes-visible'>
+      <FontAwesomeIcon icon={faBlog} /> Blog
+    </a>
+  </Link>,
+  <Link href='/'>
+    <a className='nav-blue-sometimes-visible'>
+      <FontAwesomeIcon icon={faUserCog} /> Projects
+    </a>
+  </Link>,
 
+  <Link href='/'>
+    <a className='nav-blue-sometimes-visible'>
+      <FontAwesomeIcon icon={faTasks} /> Research
+    </a>
+  </Link>,
+
+  <Link href='/'>
+    <a className='nav-blue-sometimes-visible'>
+      <FontAwesomeIcon icon={faInfo} /> About
+    </a>
+  </Link>,
+];
 const Nav = () => {
   //useState for state of view
   const [showHiddenNavs, setShowHiddenNavs] = useState(false);
@@ -43,13 +66,13 @@ const Nav = () => {
   useEffect(() => {
     //setShowHiddenNavs(!showHiddenNavs);
     //showHiddenNavs = false;
-    toggleHiddenNavs();
+    //setShowHiddenNavs(!showHiddenNavs);
+    //toggleHiddenNavs();
     if (showHiddenNavs) {
       console.log('Showing Hidden Navs');
     } else {
       console.log('Not Showing Hidden Navs');
     }
-    //setShowHiddenNavs(!showHiddenNavs);
   }, []);
   return (
     <nav
@@ -93,6 +116,7 @@ const Nav = () => {
           <FontAwesomeIcon icon={faBars} size='2x' className='nav-fa-bar' />
         </a>
       </Link>
+      {showHiddenNavs && listHiddenNavs}
     </nav>
   );
 };
