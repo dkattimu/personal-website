@@ -51,6 +51,13 @@ details.
 
 ## Tech Stack
 
+Project will use typescript:
+
+```bash
+# install dependencies @types/node supports server side type completions. May not be used in this project
+npm install typescript @types/node @types/react --save-dev
+```
+
 ### Front End (In progress ...)
 
 - Next.js
