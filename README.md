@@ -47,17 +47,20 @@ Check out our
 [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
 details.
 
-# personal-website
+# ROAD MAP
 
-### Tech Stack
+## Tech Stack
 
-#### Front End (In progress ...)
+### Front End (In progress ...)
 
-    - Next.js
-    - Tailwindcss
-    - Markdown
+- Next.js
+- Tailwindcss
+- Markdown
+- Font Awesome
 
 #### Back End (Not started)
 
-    - python (flask)
-    - mongo db/firebase
+- python
+  - flask (REST API)
+  - plotly (Graphics)
+- mongo db or firebase (database)
