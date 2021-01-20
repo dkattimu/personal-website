@@ -10,32 +10,30 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { useEffect, useState } from 'react';
+import * as cssClNames from './css-class-ref';
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
 
-const hiddenCSSCls = 'nav-blue-hidden-wide';
-const visibleCSSCls = 'nav-blue';
-const alwaysVisibleCSSCls = 'nav-blue-always-visible';
 const listHiddenNavs = [
   <Link href='/'>
-    <a className={hiddenCSSCls}>
+    <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faBlog} /> Blog
     </a>
   </Link>,
   <Link href='/'>
-    <a className={hiddenCSSCls}>
+    <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faUserCog} /> Projects
     </a>
   </Link>,
 
   <Link href='/'>
-    <a className={hiddenCSSCls}>
+    <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faTasks} /> Research
     </a>
   </Link>,
 
   <Link href='/'>
-    <a className={hiddenCSSCls}>
+    <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faInfo} /> About
     </a>
   </Link>,
@@ -67,30 +65,30 @@ const Nav = () => {
     >
       <div className='nav-container '>
         <Link href='/'>
-          <a className={alwaysVisibleCSSCls}>
+          <a className={cssClNames.alwaysVisibleCSSCls}>
             <FontAwesomeIcon icon={faHome} /> Home
           </a>
         </Link>
 
         <Link href='/'>
-          <a className={visibleCSSCls}>
+          <a className={cssClNames.visibleCSSCls}>
             <FontAwesomeIcon icon={faBlog} /> Blog
           </a>
         </Link>
         <Link href='/'>
-          <a className={visibleCSSCls}>
+          <a className={cssClNames.visibleCSSCls}>
             <FontAwesomeIcon icon={faUserCog} /> Projects
           </a>
         </Link>
 
         <Link href='/'>
-          <a className={visibleCSSCls}>
+          <a className={cssClNames.visibleCSSCls}>
             <FontAwesomeIcon icon={faTasks} /> Research
           </a>
         </Link>
 
         <Link href='/'>
-          <a className={visibleCSSCls}>
+          <a className={cssClNames.visibleCSSCls}>
             <FontAwesomeIcon icon={faInfo} /> About
           </a>
         </Link>
