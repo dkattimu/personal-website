@@ -58,9 +58,13 @@ details.
 - Markdown
 - Font Awesome
 
-#### Back End (Not started)
+### Back End (Not started)
 
 - python
   - flask (REST API)
   - plotly (Graphics)
 - mongo db or firebase (database)
+
+### Devops
+
+- containerize app
