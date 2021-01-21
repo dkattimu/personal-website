@@ -75,3 +75,9 @@ npm install typescript @types/node @types/react --save-dev
 ### Devops
 
 - containerize app
+
+### Next Steps:
+
+- Complete the NavItem->NavItems abstraction so Nav is essentially \<Nav\/>
+- Create Pages for all menu items
+- Create 404 custom page

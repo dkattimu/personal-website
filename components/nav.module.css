@@ -1,0 +1,19 @@
+/*@tailwind base;
+@tailwind components;
+@tailwind utilities;*/
+
+.navItemFaBar {
+  @apply visible p-0 m-0 md:hidden md:pt-1 md:pb-1 justify-center fill-current text-gray-300;
+}
+
+.navItemAlwaysVisible {
+  @apply flex text-center items-center justify-center space-x-4 bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24;
+}
+
+.navItemHiddenOnWide {
+  @apply flex text-center items-center justify-center bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24 md:hidden;
+}
+
+.navItemHiddenOnNarrow {
+  @apply hidden text-center items-center justify-center bg-blue-500 rounded text-white mx-0 my-2 p-0  md:flex md:h-auto md:w-24;
+}

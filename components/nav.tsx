@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import styles from './nav.module.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBars,
@@ -71,31 +73,35 @@ const Nav = () => {
         </Link>
 
         <Link href='/'>
-          <a className={cssClNames.visibleCSSCls}>
+          <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faBlog} /> Blog
           </a>
         </Link>
         <Link href='/'>
-          <a className={cssClNames.visibleCSSCls}>
+          <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faUserCog} /> Projects
           </a>
         </Link>
 
         <Link href='/'>
-          <a className={cssClNames.visibleCSSCls}>
+          <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faTasks} /> Research
           </a>
         </Link>
 
         <Link href='/'>
-          <a className={cssClNames.visibleCSSCls}>
+          <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faInfo} /> About
           </a>
         </Link>
       </div>
       <Link href='/'>
         <a onClick={() => toggleHiddenNavs()}>
-          <FontAwesomeIcon icon={faBars} size='2x' className='nav-fa-bar' />
+          <FontAwesomeIcon
+            icon={faBars}
+            size='2x'
+            className={styles.navItemFaBar} /*'nav-fa-bar'*/
+          />
         </a>
       </Link>
       {showHiddenNavs && listHiddenNavs}

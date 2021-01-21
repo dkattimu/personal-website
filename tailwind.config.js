@@ -1,7 +1,12 @@
 const colors = require('tailwindcss/colors');
 //looks like once colors are specified in the colors section of theme, any color used must be explicitly captured there.
 module.exports = {
-  purge: ['./pages/**/*.js', './components/**/*.js'],
+  purge: [
+    './pages/**/*.js',
+    './components/**/*.js',
+    './pages/**/*.tsx',
+    './components/**/*.tsx',
+  ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     colors: {

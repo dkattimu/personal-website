@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import * as fas from '@fortawesome/free-solid-svg-icons';
+import NavItem from '../components/nav-item';
 
-const Adhoc = () => (
-  <div>
-    <p>
-      <FontAwesomeIcon icon={faThumbsUp} /> Hello Next.js
-    </p>
-  </div>
-);
+const Adhoc = () => {
+  return (
+    <NavItem menuIcon={fas.faChurch} menuText='Church' showAlways={false} />
+  );
+};
 
 export default Adhoc;

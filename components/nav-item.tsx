@@ -1,15 +1,27 @@
 import Link from 'next/link';
+import styles from './nav.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Consider injecting the class name here?
 
-const NavItem = ({ icon, menuText, showAlways, ...restProps }) => {
+const NavItem = ({
+  menuIcon,
+  menuText,
+  menuHref = '/',
+  showAlways = false,
+  ...restProps
+}) => {
   return (
-    <Link href='/'>
+    <Link href={menuHref}>
       <a
         className={
-          showAlways ? 'nav-blue-always-visible' : 'nav-blue-hidden-wide'
+          showAlways ? styles.navItemAlwaysVisible : styles.navItemHiddenOnWide
         }>
-        <FontAwesomeIcon icon={icon} {...restProps} /> {menuText}
+        <FontAwesomeIcon
+          icon={menuIcon}
+          {...restProps}
+          style={{ marginRight: '0.2rem' }}
+        />
+        {menuText}
       </a>
     </Link>
   );
