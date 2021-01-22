@@ -12,7 +12,7 @@ const Blog = () => {
             icon={fas.faBlog}
             style={{ marginRight: '0.2rem' }}
           />
-          Projects
+          Blog
         </a>
       </Link>
       <NavItem menuIcon={fas.faHome} menuText='Home' showAlways={true} />

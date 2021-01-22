@@ -89,7 +89,7 @@ const Nav = () => {
           </a>
         </Link>
 
-        <Link href='/'>
+        <Link href='/sub-pages/about'>
           <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faInfo} /> About
           </a>
