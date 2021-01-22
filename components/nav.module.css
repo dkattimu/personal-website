@@ -3,7 +3,8 @@
 @tailwind utilities;*/
 
 .navItemFaBar {
-  @apply visible p-0 m-0 md:hidden md:pt-1 md:pb-1 justify-center fill-current text-gray-300;
+  @apply visible p-0 m-0 md:hidden md:pt-1 md:pb-1 justify-center fill-current
+  dark:text-gray-300 text-white;
 }
 
 .navItemAlwaysVisible {
