@@ -1,9 +1,17 @@
 import Link from 'next/link';
 import styles from './nav.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FunctionComponent as FC } from 'react';
 // Consider injecting the class name here?
+type NavItemProps = {
+  menuIcon;
+  menuText: string;
+  menuHref?: string;
+  showAlways: boolean;
+  restProps?: any;
+};
 
-const NavItem = ({
+const NavItem: FC<NavItemProps> = ({
   menuIcon,
   menuText,
   menuHref = '/',

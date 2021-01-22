@@ -17,24 +17,24 @@ import * as cssClNames from './css-class-ref';
 //TODO: Sort out overflow beyond footer
 
 const listHiddenNavs = [
-  <Link href='/'>
+  <Link href='/sub-pages/blog'>
     <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faBlog} /> Blog
     </a>
   </Link>,
-  <Link href='/'>
+  <Link href='/sub-pages/projects'>
     <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faUserCog} /> Projects
     </a>
   </Link>,
 
-  <Link href='/'>
+  <Link href='/sub-pages/research'>
     <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faTasks} /> Research
     </a>
   </Link>,
 
-  <Link href='/'>
+  <Link href='/sub-pages/about'>
     <a className={cssClNames.hiddenCSSCls}>
       <FontAwesomeIcon icon={faInfo} /> About
     </a>
@@ -72,18 +72,18 @@ const Nav = () => {
           </a>
         </Link>
 
-        <Link href='/'>
+        <Link href='/sub-pages/blog'>
           <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faBlog} /> Blog
           </a>
         </Link>
-        <Link href='/'>
+        <Link href='/sub-pages/projects'>
           <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faUserCog} /> Projects
           </a>
         </Link>
 
-        <Link href='/'>
+        <Link href='/sub-pages/research'>
           <a className={styles.navItemHiddenOnNarrow}>
             <FontAwesomeIcon icon={faTasks} /> Research
           </a>
