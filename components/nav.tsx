@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './nav.module.css';
-import * as navItemsList from './nav-items';
+import * as navItems from './nav-items';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -10,9 +10,16 @@ import { useEffect, useState } from 'react';
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
 
-const Nav = () => {
+const Nav = ({ alwaysShowHome = true }) => {
   //useState for state of view
+  console.log(`SHOW_ALWAYS: ${alwaysShowHome}`);
   const [showHiddenNavs, setShowHiddenNavs] = useState(false);
+
+  const [{ wideNavItems, narrowNavItems }, setNavItemsObj] = useState(() => {
+    const res = navItems.getNavItems(alwaysShowHome);
+    console.log(`navItems Obj: ${res}`);
+    return res;
+  });
   //watch if clicked then update ShowHidden
   const toggleHiddenNavs = () => {
     setShowHiddenNavs(!showHiddenNavs);
@@ -24,6 +31,7 @@ const Nav = () => {
       console.log('Not Showing Hidden Navs');
     }
   });
+
   return (
     <nav
       style={{
@@ -31,7 +39,7 @@ const Nav = () => {
         flexDirection: 'column',
       }} /* to push the bar on small screens to below Home*/
     >
-      <div className={styles.navContainer}>{navItemsList.navItemsHoriList}</div>
+      <div className={styles.navContainer}>{wideNavItems}</div>
       <Link href='/'>
         <a onClick={() => toggleHiddenNavs()}>
           <FontAwesomeIcon
@@ -41,9 +49,18 @@ const Nav = () => {
           />
         </a>
       </Link>
-      {showHiddenNavs && navItemsList.navItemsVertList}
+      {showHiddenNavs && narrowNavItems}
     </nav>
   );
 };
 
+//This is not working yet
+Nav.getStaticProps = (context) => {
+  //
+  return {
+    props: {
+      alwaysShowHome: false,
+    },
+  };
+};
 export default Nav;
