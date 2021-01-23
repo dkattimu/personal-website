@@ -1,45 +1,15 @@
 import Link from 'next/link';
 import styles from './nav.module.css';
+import * as navItemsList from './nav-items';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBars,
-  faHome,
-  faBlog,
-  faTasks,
-  faInfo,
-  faUserCog,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { useEffect, useState } from 'react';
-import * as cssClNames from './css-class-ref';
+
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
 
-const listHiddenNavs = [
-  <Link href='/sub-pages/blog'>
-    <a className={cssClNames.hiddenCSSCls}>
-      <FontAwesomeIcon icon={faBlog} /> Blog
-    </a>
-  </Link>,
-  <Link href='/sub-pages/projects'>
-    <a className={cssClNames.hiddenCSSCls}>
-      <FontAwesomeIcon icon={faUserCog} /> Projects
-    </a>
-  </Link>,
-
-  <Link href='/sub-pages/research'>
-    <a className={cssClNames.hiddenCSSCls}>
-      <FontAwesomeIcon icon={faTasks} /> Research
-    </a>
-  </Link>,
-
-  <Link href='/sub-pages/about'>
-    <a className={cssClNames.hiddenCSSCls}>
-      <FontAwesomeIcon icon={faInfo} /> About
-    </a>
-  </Link>,
-];
 const Nav = () => {
   //useState for state of view
   const [showHiddenNavs, setShowHiddenNavs] = useState(false);
@@ -48,16 +18,12 @@ const Nav = () => {
     setShowHiddenNavs(!showHiddenNavs);
   };
   useEffect(() => {
-    //setShowHiddenNavs(!showHiddenNavs);
-    //showHiddenNavs = false;
-    //setShowHiddenNavs(!showHiddenNavs);
-    //toggleHiddenNavs();
     if (showHiddenNavs) {
       console.log('Showing Hidden Navs');
     } else {
       console.log('Not Showing Hidden Navs');
     }
-  }, []);
+  });
   return (
     <nav
       style={{
@@ -65,36 +31,7 @@ const Nav = () => {
         flexDirection: 'column',
       }} /* to push the bar on small screens to below Home*/
     >
-      <div className='nav-container '>
-        <Link href='/'>
-          <a className={cssClNames.alwaysVisibleCSSCls}>
-            <FontAwesomeIcon icon={faHome} /> Home
-          </a>
-        </Link>
-
-        <Link href='/sub-pages/blog'>
-          <a className={styles.navItemHiddenOnNarrow}>
-            <FontAwesomeIcon icon={faBlog} /> Blog
-          </a>
-        </Link>
-        <Link href='/sub-pages/projects'>
-          <a className={styles.navItemHiddenOnNarrow}>
-            <FontAwesomeIcon icon={faUserCog} /> Projects
-          </a>
-        </Link>
-
-        <Link href='/sub-pages/research'>
-          <a className={styles.navItemHiddenOnNarrow}>
-            <FontAwesomeIcon icon={faTasks} /> Research
-          </a>
-        </Link>
-
-        <Link href='/sub-pages/about'>
-          <a className={styles.navItemHiddenOnNarrow}>
-            <FontAwesomeIcon icon={faInfo} /> About
-          </a>
-        </Link>
-      </div>
+      <div className={styles.navContainer}>{navItemsList.navItemsHoriList}</div>
       <Link href='/'>
         <a onClick={() => toggleHiddenNavs()}>
           <FontAwesomeIcon
@@ -104,7 +41,7 @@ const Nav = () => {
           />
         </a>
       </Link>
-      {showHiddenNavs && listHiddenNavs}
+      {showHiddenNavs && navItemsList.navItemsVertList}
     </nav>
   );
 };

@@ -1,29 +1,51 @@
 import Link from 'next/link';
 import styles from './nav.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FunctionComponent as FC } from 'react';
+//import {FC} from 'react';
+import { useState, useEffect, FC } from 'react';
 // Consider injecting the class name here?
 type NavItemProps = {
   menuIcon;
   menuText: string;
   menuHref?: string;
-  showAlways: boolean;
-  restProps?: any;
+  visibility: {
+    always: boolean;
+    whenWide: boolean;
+  };
+  restProps?: {};
 };
 
 const NavItem: FC<NavItemProps> = ({
   menuIcon,
   menuText,
   menuHref = '/',
-  showAlways = false,
+  visibility = { always: true, whenWide: true },
   ...restProps
 }) => {
+  let [cssClass, setCssClass] = useState(() => {
+    console.log(JSON.stringify(visibility));
+
+    if (visibility) {
+      if (visibility.always) {
+        return styles.navItemAlwaysVisible;
+      } else {
+        if (visibility.whenWide) {
+          return styles.navItemHiddenOnNarrow;
+        } else {
+          return styles.navItemHiddenOnWide;
+        }
+      }
+    }
+  });
+
+  useEffect(() => {
+    console.log(
+      `In useEffect inside nav.tsx: css class is ${JSON.stringify(cssClass)}`,
+    );
+  });
   return (
     <Link href={menuHref}>
-      <a
-        className={
-          showAlways ? styles.navItemAlwaysVisible : styles.navItemHiddenOnWide
-        }>
+      <a className={cssClass}>
         <FontAwesomeIcon
           icon={menuIcon}
           {...restProps}

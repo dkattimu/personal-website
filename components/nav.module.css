@@ -1,7 +1,9 @@
 /*@tailwind base;
 @tailwind components;
 @tailwind utilities;*/
-
+.navContainer {
+  @apply flex flex-col md:flex-row justify-between bg-gray-300 dark:bg-gray-800 p-0 rounded;
+}
 .navItemFaBar {
   @apply visible p-0 m-0 md:hidden md:pt-1 md:pb-1 justify-center fill-current
   dark:text-gray-300 text-white;
@@ -9,6 +11,10 @@
 
 .navItemAlwaysVisible {
   @apply flex text-center items-center justify-center space-x-4 bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24;
+}
+
+.nav-item-always-visible-alt {
+  @apply flex text-center items-center justify-center space-x-4 bg-teal-500 rounded text-white mx-0 my-2 p-0 h-8 w-24;
 }
 
 .navItemHiddenOnWide {
