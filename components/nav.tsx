@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 //TODO: Add modal drop-down for bars icon on small screens
 //TODO: Sort out overflow beyond footer
 
-const Nav = ({ alwaysShowHome = false }) => {
+const Nav = ({ alwaysShowHome = true }) => {
   //useState for state of view
   console.log(`SHOW_ALWAYS: ${alwaysShowHome}`);
   const [showHiddenNavs, setShowHiddenNavs] = useState(false);
