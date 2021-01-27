@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Nav from '../components/nav';
 import FAAnimation from '../components/fa-animation';
-import TWAnimation from '../components/tw-animation';
+
 import Footer from '../components/footer';
 import matter from 'gray-matter';
 //import styles from '../styles/Home.module.css'
@@ -20,8 +20,9 @@ const Index = (props) => {
       </Head>
       <Nav />
 
-      <div className='page-container'>
+      <div className='page-container '>
         <div className='flex-col'>
+          {/*Need to make the body absolute*/}
           <h2>
             {' '}
             Welcome to the landing page; contents will be dropping soon!...

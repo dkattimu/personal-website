@@ -1,128 +1,96 @@
 import NavItem from './nav-item';
 import * as fss from '@fortawesome/free-solid-svg-icons';
-import { FC } from 'react';
-import { truncate } from 'fs';
-import { faGalacticSenate } from '@fortawesome/free-brands-svg-icons';
 
-/*const navItemsHoriList =[]
+interface NavItemsInputType {
+  descr: string;
+  icon: fss.IconDefinition;
+  route: string;
+  isHome: boolean;
+}
 
-const navItemsVertListAll = navItemsVertList
-  .map((elt) => elt)
-  .unshift(
-    <NavItem
-      menuIcon={fss.faHome}
-      menuText='Home'
-      visibility={{ always: false, whenWide: false }}
-    />,
-  );
-//export default navItemsList;
-/*const navItemsHoriListJsx = navItemsHoriList.map((elt, id) => {
-  <ul key={id}>{elt}</ul>;
-});
-*/
-/*const navItemsVertListJsx = navItemsVertList.map((elt, id) => {
-  <ul key={id}>{elt}</ul>;
-});
-*/
+const NAV_CONFIG: Array<NavItemsInputType> = [
+  { descr: 'Home', icon: fss.faHome, route: '/', isHome: true },
+  { descr: 'Blog', icon: fss.faBlog, route: '/blog', isHome: false },
+  { descr: 'Projects', icon: fss.faUserCog, route: '/projects', isHome: false },
+  { descr: 'Research', icon: fss.faTasks, route: '/research', isHome: false },
+  { descr: 'About', icon: fss.faInfo, route: '/about', isHome: false },
+];
 
 /**
  *
- * @param alwaysShowHome {boolean}  if true, Home nave item is visible always
+ * @param alwaysShowHome
+ * @param showOnlyOnWide
+ * @param predicate
+ * @param navItemInputs
  */
-const getHorizontalNavItems = (alwaysShowHome: boolean = true) => {
-  return [
-    <NavItem
-      menuIcon={fss.faHome}
-      menuText='Home'
-      visibility={{ always: alwaysShowHome, whenWide: true }}
-    />,
-
-    <NavItem
-      menuHref='/blog'
-      menuIcon={fss.faBlog}
-      menuText='Blog'
-      visibility={{ always: false, whenWide: true }}
-    />,
-
-    <NavItem
-      menuHref='/projects'
-      menuIcon={fss.faUserCog}
-      menuText='Projects'
-      visibility={{ always: false, whenWide: true }}
-    />,
-    <NavItem
-      menuHref='/research'
-      menuIcon={fss.faTasks}
-      menuText='Research'
-      visibility={{ always: false, whenWide: true }}
-    />,
-
-    <NavItem
-      menuHref='/about'
-      menuIcon={fss.faInfo}
-      menuText='About'
-      visibility={{ always: false, whenWide: true }}
-    />,
-  ];
+const getNavItemsHelper = (
+  alwaysShowHome: boolean,
+  showOnlyOnWide: boolean,
+  predicate: (input: any) => boolean = (elt) => true,
+  navItemInputs: Array<NavItemsInputType> = NAV_CONFIG,
+): Array<JSX.Element> => {
+  return navItemInputs
+    .filter((elt) => predicate(elt))
+    .map((elt) => {
+      const alwaysShow = elt.isHome && alwaysShowHome; // true only if HOME and alwaysShowHome is true
+      return (
+        <NavItem
+          menuIcon={elt.icon}
+          menuHref={elt.route}
+          menuText={elt.descr}
+          visibility={{ always: alwaysShow, whenWide: showOnlyOnWide }}
+        />
+      );
+    });
 };
 /**
  *
  * @param alwaysShowHome {boolean}  if true, Home nave item is visible always
  */
-const getVerticalNavItems = (alwaysShowHome: boolean = true) => {
-  let res: Array<JSX.Element>;
-  //list without Home
-  const navItemsVertList = [
-    <NavItem
-      menuHref='/blog'
-      menuIcon={fss.faBlog}
-      menuText='Blog'
-      visibility={{ always: false, whenWide: false }}
-    />,
+const getHorizontalNavItems = (alwaysShowHome = true): Array<JSX.Element> => {
+  return getNavItemsHelper(alwaysShowHome, true);
+};
 
-    <NavItem
-      menuHref='/projects'
-      menuIcon={fss.faUserCog}
-      menuText='Projects'
-      visibility={{ always: false, whenWide: false }}
-    />,
-    <NavItem
-      menuHref='/research'
-      menuIcon={fss.faTasks}
-      menuText='Research'
-      visibility={{ always: false, whenWide: false }}
-    />,
+/**
+ *
+ * @param alwaysShowHome
+ * @param navItemInputs
+ */
+const getVerticalNavItems = (
+  alwaysShowHome: boolean = true,
+  navItemInputs: Array<NavItemsInputType> = NAV_CONFIG,
+) => {
+  let navItems: Array<JSX.Element> = getNavItemsHelper(
+    alwaysShowHome,
+    false,
+    (elt) => !elt.isHome,
+  );
 
-    <NavItem
-      menuHref='/about'
-      menuIcon={fss.faInfo}
-      menuText='About'
-      visibility={{ always: false, whenWide: false }}
-    />,
-  ];
-  res = navItemsVertList.map((elt) => elt);
+  const homeConfig = navItemInputs.filter((elt) => elt.isHome)[0];
   if (alwaysShowHome) {
     //Home is visible so don't add to vertical Nav items
   } else {
     //Home should be part of the vertical Nav items
-    res.unshift(
+    navItems.unshift(
       <NavItem
-        menuIcon={fss.faHome}
-        menuText='Home'
+        menuIcon={homeConfig.icon}
+        menuHref={homeConfig.route}
+        menuText={homeConfig.descr}
         visibility={{ always: false, whenWide: false }}
       />,
     );
   }
 
-  return res;
+  return navItems;
 };
+
 /**
  *
  * @param alwaysShowHome
  */
 const getNavItems = (alwaysShowHome = true) => {
   let res: {
-    wideNavItems: Array<JSX.Element>;
+    wideNavItems: Array<JSX.Element>; //JSX.Element; //
     narrowNavItems: Array<JSX.Element>;
   };
 
@@ -132,5 +100,21 @@ const getNavItems = (alwaysShowHome = true) => {
   };
 
   return res;
+};
+
+/**
+ *  Create a list with index for each element in list
+ *  doesn't seem to be working...
+ * @param arr
+ */
+
+const createJSXIndexedList = (arr: Array<JSX.Element>) => {
+  return (
+    <span>
+      {arr.map((elt, index) => {
+        <a key={index}>{elt}</a>;
+      })}
+    </span>
+  );
 };
 export { getNavItems, getHorizontalNavItems, getVerticalNavItems };

@@ -27,12 +27,12 @@ const NavItem: FC<NavItemProps> = ({
 
     if (visibility) {
       if (visibility.always) {
-        return styles.navItemAlwaysVisible;
+        return styles.nav__item_always_visible;
       } else {
         if (visibility.whenWide) {
-          return styles.navItemHiddenOnNarrow;
+          return styles.nav__item_hidden_on_narrow;
         } else {
-          return styles.navItemHiddenOnWide;
+          return styles.nav__item_hidden_on_wide;
         }
       }
     }

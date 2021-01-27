@@ -1,26 +1,25 @@
 /*@tailwind base;
 @tailwind components;
 @tailwind utilities;*/
-.navContainer {
+.nav__container_continuous {
+  @apply flex flex-col md:flex-row justify-between /*bg-gray-300 */ bg-blue-500 dark:bg-blue-500 p-0 rounded;
+}
+.nav__container {
   @apply flex flex-col md:flex-row justify-between bg-gray-300 dark:bg-gray-800 p-0 rounded;
 }
-.navItemFaBar {
+.nav__item_fa_bar {
   @apply visible p-0 m-0 md:hidden md:pt-1 md:pb-1 justify-center fill-current
   dark:text-gray-300 text-white;
 }
 
-.navItemAlwaysVisible {
+.nav__item_always_visible {
   @apply flex text-center items-center justify-center space-x-4 bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24;
 }
 
-.nav-item-always-visible-alt {
-  @apply flex text-center items-center justify-center space-x-4 bg-teal-500 rounded text-white mx-0 my-2 p-0 h-8 w-24;
-}
-
-.navItemHiddenOnWide {
+.nav__item_hidden_on_wide {
   @apply flex text-center items-center justify-center bg-blue-500 rounded text-white mx-0 my-2 p-0 h-8 w-24 md:hidden;
 }
 
-.navItemHiddenOnNarrow {
+.nav__item_hidden_on_narrow {
   @apply hidden text-center items-center justify-center bg-blue-500 rounded text-white mx-0 my-2 p-0  md:flex md:h-auto md:w-24;
 }
