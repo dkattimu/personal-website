@@ -1,21 +1,23 @@
 import Link from 'next/link';
 import styles from './nav.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import {FC} from 'react';
-import { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC, MouseEventHandler } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 // Consider injecting the class name here?
-type NavItemProps = {
-  menuIcon;
+type TNavItemProps = {
+  menuIcon: IconProp; //typeof FontAwesomeIcon; //TOD: check this
   menuText: string;
   menuHref?: string;
   visibility: {
     always: boolean;
     whenWide: boolean;
   };
-  restProps?: {};
+ 
+  className?: string;
+  restProps?: any;
 };
 
-const NavItem: FC<NavItemProps> = ({
+const NavItem: FC<TNavItemProps> = ({
   menuIcon,
   menuText,
   menuHref = '/',
@@ -61,5 +63,16 @@ const NavItem: FC<NavItemProps> = ({
 NavItem.defaultProps ={
     size: '1x'
 } */
+const ThemeToggle = ({ themeDescr, themIcom, visibility }) => {
+  //use NavItem to carry over the appropriate features, get as second portion of nav items?
+};
 
+ThemeToggle.defaultProps = {
+  themeDescr: 'light' as string,
+  themeIcon: null as IconProp,
+  visibility: {
+    always: true as boolean,
+    whenWide: true as boolean,
+  },
+};
 export default NavItem;

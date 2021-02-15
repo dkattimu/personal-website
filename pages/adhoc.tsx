@@ -2,7 +2,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fss from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import NavItem from '../components/nav-item';
+import {
+  SiteStructureConfig,
+  SiteStructConfig,
+  TestConfig,
+} from '../components/site-struct';
+
 import '../components/nav.module.css';
+import React from 'react';
+
 const clsStyles = {
   iconStyle: {
     clsName:
@@ -13,27 +21,31 @@ const clsStyles = {
 };
 const Adhoc = () => {
   return (
-    <nav
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-      }} /* to push the bar on small screens to below Home*/
-    >
-      <NavItem
-        menuIcon={fss.faChurch}
-        menuText='Church'
-        visibility={{ always: false, whenWide: true }}
-      />
-      <Link href=''>
-        <a className={clsStyles.iconStyle.clsName}>
-          <FontAwesomeIcon
-            icon={fss.faChurch}
-            style={{ marginRight: '0.2rem' }}
-          />
-          Bobo
-        </a>
-      </Link>
-    </nav>
+    <>
+      <nav
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+        }} /* to push the bar on small screens to below Home*/
+      >
+        <NavItem
+          menuIcon={fss.faChurch}
+          menuText='Church'
+          visibility={{ always: false, whenWide: true }}
+        />
+        <Link href=''>
+          <a className={clsStyles.iconStyle.clsName}>
+            <FontAwesomeIcon
+              icon={fss.faChurch}
+              style={{ marginRight: '0.2rem' }}
+            />
+            Bobo
+          </a>
+        </Link>
+      </nav>
+      <SiteStructConfig />
+      <TestConfig />
+    </>
   );
 };
 

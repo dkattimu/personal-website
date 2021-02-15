@@ -1,5 +1,6 @@
 import NavItem from './nav-item';
 import * as fss from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 interface NavItemsInputType {
   descr: string;
@@ -43,12 +44,62 @@ const getNavItemsHelper = (
       );
     });
 };
+
+/**
+ *
+ * @param alwaysShowHome
+ * @param showOnlyOnWide
+ * @param predicate
+ * @param navItemInputs
+ */
+const getNavItemsHelperJSX = (
+  alwaysShowHome: boolean,
+  showOnlyOnWide: boolean,
+  predicate: (input: any) => boolean = (elt) => true,
+  navItemInputs: Array<NavItemsInputType> = NAV_CONFIG,
+): JSX.Element => {
+  return (
+    <ul /*style={{ display: 'inline', flexDirection: 'row' }}*/>
+      {navItemInputs
+        .filter((elt) => predicate(elt))
+        .map((elt) => {
+          const alwaysShow = elt.isHome && alwaysShowHome; // true only if HOME and alwaysShowHome is true
+          return (
+            <NavItem
+              //style={{ display: 'inline' }}
+              key={elt.descr}
+              menuIcon={elt.icon}
+              menuHref={elt.route}
+              menuText={elt.descr}
+              visibility={{ always: alwaysShow, whenWide: showOnlyOnWide }}
+            />
+          );
+        })}
+    </ul>
+  );
+};
+
 /**
  *
  * @param alwaysShowHome {boolean}  if true, Home nave item is visible always
  */
 const getHorizontalNavItems = (alwaysShowHome = true): Array<JSX.Element> => {
   return getNavItemsHelper(alwaysShowHome, true);
+};
+
+/**
+ *
+ * @param alwaysShowHome
+ */
+const getHorizontalNavItemsJSX = (
+  alwaysShowHome ,
+  navItemsInputs,
+): JSX.Element => {
+  return getNavItemsHelperJSX(
+    alwaysShowHome,
+    true,
+    navItemsInputs = navItemsInputs,
+  );
 };
 
 /**
@@ -87,6 +138,32 @@ const getVerticalNavItems = (
 /**
  *
  * @param alwaysShowHome
+ * @param navItemInputs
+ */
+const getVerticalNavItemsJSX = (
+  alwaysShowHome: boolean,
+  navItemInputs: Array<NavItemsInputType> = NAV_CONFIG,
+): JSX.Element => {
+  let navItemsJSX: JSX.Element = getNavItemsHelperJSX(
+    alwaysShowHome,
+    false,
+    (elt) => !elt.isHome,
+  );
+
+  const homeConfig = navItemInputs.filter((elt) => elt.isHome)[0];
+  if (alwaysShowHome) {
+    //Home is visible so don't add to vertical Nav items
+  } else {
+    //Home should be part of the vertical Nav items
+    navItemsJSX = getNavItemsHelperJSX(alwaysShowHome, false, (elt) => true);
+  }
+
+  return navItemsJSX;
+};
+
+/**
+ *
+ * @param alwaysShowHome
  */
 const getNavItems = (alwaysShowHome = true) => {
   let res: {
@@ -102,19 +179,26 @@ const getNavItems = (alwaysShowHome = true) => {
   return res;
 };
 
-/**
- *  Create a list with index for each element in list
- *  doesn't seem to be working...
- * @param arr
- */
-
-const createJSXIndexedList = (arr: Array<JSX.Element>) => {
-  return (
-    <span>
-      {arr.map((elt, index) => {
-        <a key={index}>{elt}</a>;
-      })}
-    </span>
-  );
+const getNavItemsJSX = ({
+  isHomeAlways,
+  navItemsList,
+}): {
+  wideNavItems: JSX.Element; //Array<JSX.Element>; //JSX.Element; //
+  narrowNavItems: JSX.Element; //Array<JSX.Element>;
+} => {
+  return {
+    wideNavItems: getHorizontalNavItemsJSX(isHomeAlways, navItemsList),
+    narrowNavItems: getVerticalNavItemsJSX(isHomeAlways, navItemsList),
+  };
 };
-export { getNavItems, getHorizontalNavItems, getVerticalNavItems };
+
+getNavItemsJSX.defaultProps = {
+  isHomeAlways: false,
+  navItemsList: NAV_CONFIG,
+};
+export {
+  getNavItems,
+  getHorizontalNavItems,
+  getVerticalNavItems,
+  getNavItemsJSX,
+};

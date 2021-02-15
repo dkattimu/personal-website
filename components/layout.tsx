@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Nav from './nav';
 import Footer from './footer';
+import React from 'react';
 
 const GeneralPageLayout = ({ children }) => {
   <>

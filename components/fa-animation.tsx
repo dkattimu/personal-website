@@ -8,6 +8,7 @@ import {
   faCogs,
   faSync,
 } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 const FAAnimation = () => {
   return (
@@ -21,7 +22,7 @@ const FAAnimation = () => {
         style={{
           display: 'inline-block',
           marginTop: '2rem',
-          MarginBotton: '2rem',
+          marginBottom: '2rem',
           marginLeft: '0rem',
           marginRight: '4rem',
         }}
@@ -35,7 +36,7 @@ const FAAnimation = () => {
         style={{
           display: 'inline-block',
           marginTop: '2rem',
-          MarginBotton: '2rem',
+          marginBottom: '2rem',
           marginLeft: '0rem',
           marginRight: '4rem',
         }}
@@ -49,7 +50,7 @@ const FAAnimation = () => {
         style={{
           display: 'inline-block',
           marginTop: '2rem',
-          MarginBotton: '2rem',
+          marginBottom: '2rem',
           marginLeft: '0rem',
           marginRight: '4rem',
         }}
@@ -64,7 +65,7 @@ const FAAnimation = () => {
         style={{
           display: 'inline-block',
           marginTop: '2rem',
-          MarginBotton: '2rem',
+          marginBottom: '2rem',
           marginLeft: '0rem',
           marginRight: '2rem',
         }}

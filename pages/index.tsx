@@ -1,15 +1,34 @@
 import Head from 'next/head';
 import Nav from '../components/nav';
 import FAAnimation from '../components/fa-animation';
-
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/footer';
 import matter from 'gray-matter';
+import { SiteStructureConfig } from '../components/site-struct';
 //import styles from '../styles/Home.module.css'
 //import '../styles/globals.css'
 //import { fs as fs1 } from 'fs';
 
 const Index = (props) => {
   console.log(`Index -> ${JSON.stringify(props)}`);
+  const [isNavBarContinuous, setIsNavBarContinuous] = useState(false);
+  const [isNavHomeVisibleOnNarrow, setIsNavHomeVisibleOnNarrow] = useState(
+    false,
+  );
+  const handleContinuity = (evt) => {
+    evt.preventDefault();
+    setIsNavBarContinuous(evt.currentTarget.checked);
+  };
+
+  const handleHomeVisibility = (evt) => {
+    evt.preventDefault();
+    setIsNavHomeVisibleOnNarrow(evt.currentTarget.checked);
+    //alert(isNavHomeVisibleOnNarrow);
+  };
+
+  useEffect(() => {
+    //alert(navBarContinuity);
+  }, [isNavBarContinuous, isNavHomeVisibleOnNarrow]);
   return (
     <>
       <Head>
@@ -19,7 +38,12 @@ const Index = (props) => {
         <title>{props.title}</title>
       </Head>
       <Nav />
-
+      <SiteStructureConfig
+        barContinuityHandler={handleContinuity}
+        //isBarContinuous={navBarContinuity}
+        homeNarrowVisibilityHandler={handleHomeVisibility}
+        //isHomeNarrowVisibility={navHomeNavVisibleOnNarrow}
+      />
       <div className='page-container '>
         <div className='flex-col'>
           {/*Need to make the body absolute*/}

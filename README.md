@@ -76,8 +76,22 @@ npm install typescript @types/node @types/react --save-dev
 
 - containerize app
 
+### Testing
+
+- Unit tests files are the \*.test.ts files using jest and enzyme
+- Integration tests will be via cypress and will be in the \*.spec.ts files.
+
 ### Next Steps:
 
 - Complete the NavItem->NavItems abstraction so Nav is essentially \<Nav\/>
 - Create Pages for all menu items
 - Create 404 custom page
+
+---
+
+## Notes
+
+need to install jest-css and update jest config to avoid the import of css
+styles causing headaches
+
+[See Here](https://github.com/justinsisley/Jest-CSS-Modules)
