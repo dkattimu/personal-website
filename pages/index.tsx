@@ -38,13 +38,7 @@ const Index = (props) => {
         <title>{props.title}</title>
       </Head>
       <Nav />
-      <SiteStructureConfig
-        barContinuityHandler={handleContinuity}
-        //isBarContinuous={navBarContinuity}
-        homeNarrowVisibilityHandler={handleHomeVisibility}
-        //isHomeNarrowVisibility={navHomeNavVisibleOnNarrow}
-      />
-      <div className='page-container '>
+      <div className='page-container'>
         <div className='flex-col'>
           {/*Need to make the body absolute*/}
           <h2>

@@ -13,7 +13,8 @@ describe('Theme Nav Item works', () => {
 
   });
   const wrapper = mount(
-    <ThemeNavItem descr={testButtonDescr} data-test = "themeToggle" themeToggleHandler={mockCallBack} />,
+    <ThemeNavItem descr={testButtonDescr} data-test = "themeToggle" 
+    themeToggleHandler={mockCallBack} />,
   );
 
   it('click event changes state', () => {

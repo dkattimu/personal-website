@@ -1,3 +1,5 @@
+
+///<reference types="Cypress"/>
 import { mount, shallow } from 'enzyme';
 import {
   render,

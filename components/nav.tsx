@@ -39,13 +39,13 @@ const Nav = ({ alwaysShowHome, continuousNavBar }) => {
   const nav_container = continuousNavBar
     ? styles.nav__container_continuous
     : styles.nav__container;
-  console.log(`nav-container ${nav_container}`);
+  //console.log(`nav-container ${nav_container}`);
   useEffect(() => {
     //alert(`Count of Narrow Items ${narrowNavItems.length}`);
     if (showHiddenNavs) {
-      console.log('Showing Hidden Navs');
+      //console.log('Showing Hidden Navs');
     } else {
-      console.log('Not Showing Hidden Navs');
+      //console.log('Not Showing Hidden Navs');
     }
   });
   //console.log(`Count of Narrow Items ${narrowNavItems.length}`);
