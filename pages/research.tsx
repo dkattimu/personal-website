@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fas from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import NavItem from '../components/nav-item';
+import React from 'react';
+
 const Research = () => {
   return (
     <>

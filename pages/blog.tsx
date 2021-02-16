@@ -1,9 +1,10 @@
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fas from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import NavItem from '../components/nav-item';
 
-const Blog = () => {
+const Blog = (props) => {
   return (
     <>
       <Link href=''>
