@@ -55,7 +55,7 @@ describe('something', () => {
       document.body.appendChild(document.createElement('div')),
     );
 
-    expect(document.body.textContent).toMatch('Home');
+    expect(document.body.textContent).contains('Home');
   });
 });
 //   it('displays the dom', () => {
