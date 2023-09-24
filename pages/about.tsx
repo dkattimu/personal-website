@@ -18,7 +18,7 @@ const About = () => {
       </Link>
       <NavItem
         menuIcon={fss.faHome}
-        menuText='Home'
+        menuText='Home for Home'
         visibility={{ always: true, whenWide: true }}
       />
     </>
