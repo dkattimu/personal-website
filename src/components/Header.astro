@@ -6,40 +6,24 @@ import HeaderIcon from "./HeaderIcon"
 ---
 
 <header
-    class="dark:bg-black flex min-w-full justify-between items-center px-20 py-0 max-sm:px-5 max-sm:py-10 max-w-7xl justify-self-center w-full"
+    class="dark:bg-black flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full"
 >
     <a href="/" class="flex gap-x-4 items-center dark:text-teal-100">
         <Image
-            src="/heartbeat.png"
-            alt="home page image"
+            src="/lion_face.png"
+            alt="LoToJ"
             width={64}
             height={64}
             format="webp"
             class="w-16"
         />
 
-        <p class="uppercase text-1xl font-mono dark:text-teal-300 text-red-900"> ROM 12:1 ...</p>
+        <p class="text-1xl font-mono dark:text-yellow-500 text-red-900"> R-5-5</p>
     </a>
-   <!-- {
-        userEmail?.value ? (
-            <a
-                href="/logout"
-                class="bg-teal-900 text-white py-3 px-6 rounded-xl text-xl"
-            >
-                Logout
-            </a>
-        ) : (
-            <a
-                href="/login"
-                class="bg-teal-900 text-white py-3 px-6 rounded-xl text-xl"
-            >
-                Login
-            </a>
-        )
-}-->
+   
   <ul class="flex gap-x-8">
-    <li><a href="/" class="text-teal-900 font-bold dark:text-teal-500"> <HeaderIcon option="home" descr="Home"/></a> </li>
-    <li><a href="/" class="text-teal-900  font-bold dark:text-teal-600"> <HeaderIcon option="blog" descr="Blog"/></a>
-    <li><a href="/" class="text-teal-900 font-bold dark:text-teal-700 "> <HeaderIcon option="research" descr="Research"/></a>
+    <li><a href="/" class="text-teal-900 font-bold dark:text-teal-900"> <HeaderIcon option="home" descr="Home"/></a> </li>
+    <li><a href="/" class="text-teal-00  font-bold dark:text-teal-900"> <HeaderIcon option="blog" descr="Blog"/></a>
+    <li><a href="/" class="text-teal-900 font-bold dark:text-teal-900 "> <HeaderIcon option="research" descr="Research"/></a>
   </ul>      
 </header>
