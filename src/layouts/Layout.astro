@@ -10,7 +10,7 @@ const { title, description="Personal Website, Attimu D", image } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -21,7 +21,7 @@ const { title, description="Personal Website, Attimu D", image } = Astro.props;
 		<title>{title}</title>
 	
 	</head>
-	<body class="min-h-screen">
+	<body class="dark:bg-dark min-h-screen">
 		<Header/>
 		<slot />
 	</body>
