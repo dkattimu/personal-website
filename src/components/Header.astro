@@ -1,29 +1,33 @@
 ---
 import {Image} from "astro:assets"
 import HeaderIcon from "./HeaderIcon"
+let header_name_color ="text-white"
+let header_icon_style ="text-white size-6"
+let header_bg_color ="bg-black"
 
-//const userEmail = Astro.cookies.get("userEmail")
+let temp ="flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full"
 ---
 
 <header
-    class="dark:bg-black flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full"
+    class=`dark:${header_bg_color} block justify-between items-center px-0 py-0 min-w-full md:flex md:px-20 md:py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
 >
-    <a href="/" class="flex gap-x-4 items-center dark:text-teal-100">
+    <a href="/" class="animate-pulse flex gap-x-4 items-center dark:text-teal-100">
         <Image
             src="/lion_face.png"
             alt="LoToJ"
             width={64}
             height={64}
             format="webp"
-            class="animate-pulse w-16 rounded-full"
+            class="w-16 rounded-full"
         />
 
-        <p class="text-1xl font-mono dark:text-yellow-500 text-red-900"> R-5-5</p>
+        <p class="text-1xl font-mono dark:text-yellow-500 text-red-900"> Rev 5:5</p>
     </a>
    
   <ul class="flex gap-x-8">
-    <li><a href="/" class="text-teal-900 font-bold dark:text-teal-900"> <HeaderIcon option="home" descr="Home"/></a> </li>
-    <li><a href="/" class="text-teal-00  font-bold dark:text-teal-900"> <HeaderIcon option="blog" descr="Blog"/></a>
-    <li><a href="/" class="text-teal-900 font-bold dark:text-teal-900 "> <HeaderIcon option="research" descr="Research"/></a>
+    <li><a href="/" class=`text-teal-900 font-bold dark:${header_name_color}`> <HeaderIcon option="home" descr="Home", style={header_icon_style}/></a> </li>
+    <li><a href="/" class=`text-teal-00  font-bold dark:${header_name_color}`> <HeaderIcon option="blog" descr="Blog" style={header_icon_style}/></a>
+    <li><a href="/" class=`text-teal-900 font-bold dark:${header_name_color}`> <HeaderIcon option="research" descr="Research"
+       style={header_icon_style}/></a>
   </ul>      
 </header>
