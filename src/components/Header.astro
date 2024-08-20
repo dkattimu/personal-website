@@ -1,15 +1,16 @@
 ---
 import {Image} from "astro:assets"
 import HeaderIcon from "./HeaderIcon"
-let header_name_color ="text-white"
-let header_icon_style ="text-teal-600 dark:text-white size-6"
+
+let header_name_style ="text-rose-200 font-bold dark:text-white"
+let header_icon_style =" mx-1 text-rose-400 dark:text-white size-6"
 let header_bg_color ="bg-black"
 
 let temp ="flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full"
 ---
 
 <header
-    class=`dark:${header_bg_color} block justify-between items-center px-0 py-0 min-w-full md:flex md:px-20 md:py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
+    class=`bg-indigo-600 dark:${header_bg_color} block justify-between items-center px-0 py-0 min-w-full md:flex md:px-20 md:py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
 >
     <a href="/" class="animate-pulse flex gap-x-4 items-center dark:text-teal-100">
         <Image
@@ -21,13 +22,13 @@ let temp ="flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 
             class="w-16 rounded-full"
         />
 
-        <p class="text-1xl font-mono dark:text-yellow-500 text-red-900"> Rev 5:5</p>
+        <p class="text-1xl font-mono dark:text-yellow-500 text-red-100"> Rev 5:5</p>
     </a>
    
   <ul class="flex gap-x-8">
-    <li><a href="/" class=`text-teal-900 font-bold dark:${header_name_color}`> <HeaderIcon option="home" descr="Home", style={header_icon_style}/></a> </li>
-    <li><a href="/" class=`text-teal-900  font-bold dark:${header_name_color}`> <HeaderIcon option="blog" descr="Blog" style={header_icon_style}/></a>
-    <li><a href="/" class=`text-teal-900 font-bold dark:${header_name_color}`> <HeaderIcon option="research" descr="Research"
+    <li><a href="/" class={header_name_style}> <HeaderIcon option="home" descr="Home", style={header_icon_style}/></a> </li>
+    <li><a href="/" class={header_name_style}> <HeaderIcon option="blog" descr="Blog" style={header_icon_style}/></a>
+    <li><a href="/" class={header_name_style}> <HeaderIcon option="research" descr="Research"
        style={header_icon_style}/></a>
   </ul>      
 </header>
