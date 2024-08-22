@@ -7,10 +7,12 @@ interface Props {
 }
 
 const { title, description="Personal Website, Attimu D", image } = Astro.props;
+let DFLT_BG ="bg-stone-300";
+let DK_BG = "bg-stone-800;"
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class=`dark ${DFLT_BG} dark:${DK_BG}`>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -21,8 +23,12 @@ const { title, description="Personal Website, Attimu D", image } = Astro.props;
 		<title>{title}</title>
 	
 	</head>
-	<body class="bg-red dark:bg-dark min-h-screen">
+	<body class="bg-red items-stretch dark:bg-dark min-h-screen">
 		<Header/>
-		<slot/>
+		<div  class="bg-black">
+			<slot/>
+
+		</div>
+		
 	</body>
 </html>

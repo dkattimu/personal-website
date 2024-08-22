@@ -2,27 +2,28 @@
 import {Image} from "astro:assets"
 import HeaderIcon from "./HeaderIcon"
 
-let header_name_style ="text-rose-200 font-bold dark:text-white"
-let header_icon_style =" mx-1 text-rose-400 dark:text-white size-6"
-let header_bg_color ="bg-black"
+let header_name_style ="text-violet-500 font-bold dark:text-white"
+let header_icon_style ="mx-1 text-violet-400 dark:text-white size-6"
+let header_dark_bg_color ="bg-slate-900"
+let header_bg_color ="bg-slate-900"
 
 let temp ="flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full"
 ---
 
 <header
-    class=`bg-indigo-600 dark:${header_bg_color} block justify-between items-center px-0 py-0 min-w-full md:flex md:px-20 md:py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
+    class=`${header_bg_color} dark:${header_dark_bg_color} block justify-between items-center px-5 py-0 min-w-full sm:flex md:px-20 md:py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
 >
     <a href="/" class="animate-pulse flex gap-x-4 items-center dark:text-teal-100">
         <Image
-            src="/lion_face.png"
+            src="/mind.png"
             alt="LoToJ"
             width={64}
             height={64}
             format="webp"
-            class="w-16 rounded-full"
+            class="w-16 animate-spin rounded-full"
         />
 
-        <p class="text-1xl font-mono dark:text-yellow-500 text-red-100"> Rev 5:5</p>
+        <p class="text-1xl font-mono dark:text-yellow-500 text-red-100"> Rom 12:1</p>
     </a>
    
   <ul class="flex gap-x-8">
