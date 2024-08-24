@@ -1,19 +1,33 @@
 ---
-import {Image} from "astro:assets"
-import HeaderIcon from "./HeaderIcon"
+import { Image } from "astro:assets";
+import { HeaderIcon, ThemeToggle } from "./HeaderIcon";
 
-let header_name_style ="text-violet-500 font-bold dark:text-white"
-let header_icon_style ="mx-1 text-violet-400 dark:text-white size-6"
-let header_dark_bg_color ="bg-slate-900"
-let header_bg_color ="bg-slate-900"
+let header_name_style = "text-violet-500 font-bold dark:text-white";
+let header_icon_style = "mx-1 text-violet-400 dark:text-white size-6";
+let header_dark_bg_color = "bg-slate-900";
+let header_bg_color = "bg-slate-900";
 
-let temp ="flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full"
+let temp =
+    "flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full";
+
+let toggleHandler = () => {
+    let IsDarkMode = document.documentElement.classList.contains("dark");
+    console.log(`IsDarkMode : ${IsDarkMode}`);
+    if (IsDarkMode) {
+        document.documentElement.classList.remove("dark");
+    } else {
+        document.documentElement.classList.add("dark");
+    }
+};
 ---
 
 <header
-    class=`${header_bg_color} dark:${header_dark_bg_color} block justify-between items-center px-5 py-0 min-w-full sm:flex md:px-20 md:py-0 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
+    class=`${header_bg_color} dark:${header_dark_bg_color} block justify-between items-center px-5 py-0 min-w-full sm:flex sm:px-20 sm:pt-5 max-sm:px-10 max-sm:py-0 max-sm:block max-w-7xl justify-self-center w-full`
 >
-    <a href="/" class="animate-pulse flex gap-x-4 items-center dark:text-teal-100">
+    <a
+        href="/"
+        class="animate-pulse flex gap-x-4 items-center dark:text-teal-100"
+    >
         <Image
             src="/mind.png"
             alt="LoToJ"
@@ -23,13 +37,48 @@ let temp ="flex min-w-full justify-between items-center px-20 py-0 max-sm:px-10 
             class="w-16 animate-spin rounded-full"
         />
 
-        <p class="text-1xl font-mono dark:text-yellow-500 text-red-100"> Rom 12:1</p>
+        <p class="text-1xl font-mono dark:text-yellow-500 text-red-100">
+            Rom 12:1
+        </p>
     </a>
-   
-  <ul class="flex gap-x-8">
-    <li><a href="/" class={header_name_style}> <HeaderIcon option="home" descr="Home", style={header_icon_style}/></a> </li>
-    <li><a href="/" class={header_name_style}> <HeaderIcon option="blog" descr="Blog" style={header_icon_style}/></a>
-    <li><a href="/" class={header_name_style}> <HeaderIcon option="research" descr="Research"
-       style={header_icon_style}/></a>
-  </ul>      
+
+    <ul class="flex gap-x-8">
+        <li>
+            <a href="/" class={header_name_style}>
+                <HeaderIcon
+                    option="home"
+                    descr="Home"
+                    ,
+                    style={header_icon_style}
+                /></a
+            >
+        </li>
+        <li>
+            <a href="/" class={header_name_style}>
+                <HeaderIcon
+                    option="blog"
+                    descr="Blog"
+                    style={header_icon_style}
+                /></a
+            >
+        </li>
+        <li>
+            <a href="/" class={header_name_style}>
+                <HeaderIcon
+                    option="research"
+                    descr="Research"
+                    style={header_icon_style}
+                /></a
+            >
+        </li>
+        <li>
+            <a href="/" class={header_name_style}>
+                <ThemeToggle
+                    descr="Theme"
+                    style={"bg-blue-700  px-4 pb-1 pt-1 mb-2 rounded-full"}
+                    handler={()=>alert("Test")}
+                /></a
+            >
+        </li>
+    </ul>
 </header>
