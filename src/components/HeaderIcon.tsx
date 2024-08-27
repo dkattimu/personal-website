@@ -83,7 +83,7 @@ interface ThemeToggleProps {
 let descr_ = "Dark/Light Theme";
 let style_ = "bg-blue-700  px-4 pb-1 mb-2 rounded-full";
 
-let ThemeToggle = ({
+let ThemeToggle_ = ({
     descr = descr_,
     style = style_,
     handler,
@@ -100,7 +100,7 @@ let ThemeToggle = ({
     );
 };
 
-export { ThemeToggle, HeaderIcon };
+export { ThemeToggle_, HeaderIcon };
 
 /*
   <>

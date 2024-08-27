@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import { HeaderIcon, ThemeToggle } from "./HeaderIcon";
+import { HeaderIcon } from "./HeaderIcon";
+import ThemeToggle from "./ThemeToggle.astro";
 
-let header_name_style = "text-violet-500 font-bold dark:text-white";
+let header_name_style = "text-violet-300 font-bold dark:text-white";
 let header_icon_style = "mx-1 text-violet-400 dark:text-white size-6";
 let header_dark_bg_color = "bg-slate-900";
 let header_bg_color = "bg-slate-900";
@@ -37,9 +38,9 @@ let toggleHandler = () => {
             class="w-16 animate-spin rounded-full"
         />
 
-        <p class="text-1xl font-mono dark:text-yellow-500 text-red-100">
+        <div class="text-1xl font-mono gap-x-5 dark:text-yellow-500 text-red-100">
             Rom 12:1
-        </p>
+        </div>
     </a>
 
     <ul class="flex gap-x-8">
@@ -72,11 +73,10 @@ let toggleHandler = () => {
             >
         </li>
         <li>
-            <a href="/" class={header_name_style}>
+            <a href="/" class={header_name_style} >
                 <ThemeToggle
-                    descr="Theme"
-                    style={"bg-blue-700  px-4 pb-1 pt-1 mb-2 rounded-full"}
-                    handler={()=>alert("Test")}
+                    descr="Change Theme"
+                    style={"bg-blue-700  px-4 pb-1 pt-1 mb-2 rounded-full text-sm"}
                 /></a
             >
         </li>

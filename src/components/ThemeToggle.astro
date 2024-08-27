@@ -1,0 +1,39 @@
+---
+import { ASTRO_PATH_HEADER } from "@astrojs/vercel/serverless";
+
+interface Props {
+    descr?: string;
+    style?: string;
+}
+let descr_ = "Dark/Light Theme";
+let style_ = "bg-green-700  px-4 pb-1 pt-1 mb-2 rounded-full text-sm";
+
+const { descr = descr_, style = style_ } = Astro.props;
+---
+
+<div class="mb-0" id="toggle">
+    <button class={style}>
+        {descr}
+    </button>
+</div>
+
+<script>
+    let toggleHandler = () => {
+        let htmlClassList = document.documentElement.classList;
+        console.log(`${JSON.stringify(htmlClassList)}`);
+        let IsDarkMode = document.documentElement.classList.contains("dark");
+        console.log(`IsDarkMode : ${IsDarkMode}`);
+        if (IsDarkMode) {
+            document.documentElement.classList.remove("dark");
+            //alert("dark mode")
+            let updatedHtmlClassList = document.documentElement.classList;
+            //alert(`updated class list: ${JSON.stringify(document.documentElement.classList)}`)
+            console.log((`updated class list: ${JSON.stringify(document.documentElement.classList)}`)
+            )
+        } else {
+            document.documentElement.classList.add("dark");
+        }
+    };
+    const btn = document.getElementById("toggle");
+    btn?.addEventListener("click", () => toggleHandler());
+</script>
