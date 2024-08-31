@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro"
+import { ThemeSettings } from "../components/utils";
 interface Props {
 	title: string;
 	description?: string;
@@ -7,8 +8,9 @@ interface Props {
 }
 
 const { title, description="Personal Website, Attimu D", image } = Astro.props;
-let DFLT_BG = "bg-stone-100";
-let DK_BG = "dark:bg-stone-900";
+let DFLT_BG =ThemeSettings.default_bg;// "bg-stone-100";
+let DK_BG = "dark:bg-black";
+export {DFLT_BG, DK_BG}
 ---
 
 
@@ -18,10 +20,16 @@ let DK_BG = "dark:bg-stone-900";
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!--<link rel="icon" type="image/svg+xml" href="/favicon.svg" />-->
+		<link rel="icon" type="image/svg+xml" href="/lion_face.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta property="og:image" content={image}/>
 		<title>{title}</title>
+		<script>
+			let classList = document.documentElement.classList
+			//alert(classList)
+			console.log(`Layout html class-list: ${classList}`)
+		</script>
 	
 	</head>
 	<body class=`items-stretch dark:text-white  min-h-screen`>
@@ -31,4 +39,23 @@ let DK_BG = "dark:bg-stone-900";
 		</div>
 		
 	</body>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+  window.localStorage.setItem("theme", theme);
+</script>
 </html>

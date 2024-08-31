@@ -100,7 +100,7 @@ let ThemeToggle_ = ({
     );
 };
 
-export { ThemeToggle_, HeaderIcon };
+export { HeaderIcon };
 
 /*
   <>

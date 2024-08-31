@@ -1,0 +1,61 @@
+---
+import Header from "../components/Header.astro";
+//import { DFLT_BG, DK_BG } from "./Layout.astro";
+import { ThemeSettings } from "../components/utils";
+let DFLT_BG = ThemeSettings.default_bg; //"bg-stone-100";
+let DK_BG = ThemeSettings.dark_bg; //"dark:bg-black";
+
+console.log(`Blog Layout: ${JSON.stringify(ThemeSettings)}`);
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en" class=`dark ${DFLT_BG} ${DK_BG}`>
+    <head>
+        <!-- Katex -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+            integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+            crossorigin="anonymous"
+        />
+        <script
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+            integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+            crossorigin="anonymous"></script>
+        <script
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+            crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        <title>{frontmatter.title}</title>
+    </head>
+
+    <body class=`items-stretch dark:text-white  min-h-screen`>
+        <Header />
+        <div
+            class="prose max-w-none ml-20 mt-10 mb-20 mr-20 dark:text-white font-serif text-lg"
+        >
+            <h1 class="text-3xl text-center uppercase text-rose-500">
+                {frontmatter.title}
+            </h1>
+            <h1 class="text-sm text-center dark:text-white">
+                by {frontmatter.author}
+            </h1>
+            <article
+                class="prose max-w-none prose-a:text-green-400 dark:prose-headings:text-rose-300 dark:text-white dark:prose-p:text-white dark:prose-strong:text-white"
+            >
+                <slot/>
+            </article>
+        </div>
+    </body>
+</html>
+<!--<Header
+  
+  <h1 class="text-bold">{frontmatter.title}</h1>
+  <h2>Post author: {frontmatter.author}</h2>
+  <p>{frontmatter.description}</p>
+  <slot />  Markdown content is injected here -->
+<!-- .
+/>-->

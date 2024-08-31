@@ -17,7 +17,7 @@ const { descr = descr_, style = style_ } = Astro.props;
     </button>
 </div>
 
-<script>
+<script is:inline>
     let toggleHandler = () => {
         let htmlClassList = document.documentElement.classList;
         console.log(`${JSON.stringify(htmlClassList)}`);
@@ -32,8 +32,18 @@ const { descr = descr_, style = style_ } = Astro.props;
             )
         } else {
             document.documentElement.classList.add("dark");
+          
         }
     };
+    //alternative toggle functionality
+    let handleToggleClick =() =>{
+        
+        const elt = document.documentElement;
+        console.log(` before: ${elt.classList}`)
+        elt.classList.toggle("dark")
+        console.log(`after: ${elt.classList}`)
+    }
     const btn = document.getElementById("toggle");
-    btn?.addEventListener("click", () => toggleHandler());
+    btn?.addEventListener("click", () => handleToggleClick());
+    
 </script>
