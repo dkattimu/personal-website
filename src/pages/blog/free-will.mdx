@@ -6,7 +6,7 @@ description: Is free will a thing or just a figment of our misguided imagination
 ---
 ## Introduction
 
-The concept of free-will is a metaphysical one that arises both in atheistic and theistic philosophical circles.Indeed, it translates into popular culture as well. It seems "the smart kids on the block" have conclused that there is no free will.
+The concept of free-will is a metaphysical one that arises both in atheistic and theistic philosophical circles. However, the concept intersects other fields of study including ethics, science (biology, physics, etc.). The concept has since entered into the zeitgeist as well as evidenced by hits on youtube for searches related to "Free will". Judging anecdotally by popular culture, it would seems "the smart kids on the block" have conclused that there is no such thing as free will.
 From our perspective, this is another example of ambiguous communication that we will try to disambiguate as much as possible in this article.
 To do that, we will start with a definition of the concept of free-will and show that arguments for or against the concept are seldom clear and the conclusions as obvious
 as some may like or even pretend it to be. We will also show that no-one actually believes in a certain understanding of the absence of free will.
@@ -17,7 +17,13 @@ In the colloquial sense, the claim of "free will does not exist" seems to indica
 I would concede that for any action by an individual $\mathcal I$, that actioin is influenced by an environment $E$. This environment for this article refers to any influence on the decision including historical experience, genetics, one's emotion, etc. The position that there is no free-will misguided at the minimum. The reason is that though ones environment can _influence_ a decision/action, it does not necessarily _compel_ the same.
 
 ## Determinisim & Compatibilism
+We first state a definition of determinism from [3] as: the view that for every event that happens, there are are conditions such that, given them, nothing else could have happened.
+The strict form of determinism denies the existence of free will. 
+
+
 Compatibilism in a nutshell accepts determinism as largely true while asserting that there is some level of chaos/pertubations to the deterministic drivers of action. Compatibilism thus supports the notion of influence of the will but not the determination of the will.
+
+As noted in [3] however, compatibilists on one hand and proponents of strict determinism and libertarianism have a different understanding of free will 
 
 Another school of thought rejects any form of determinism i.e. non compatibilist
 This contrasts with n
@@ -37,38 +43,77 @@ We start with a definition of the concept of free will.
 [1] Free Will, [https://plato.stanford.edu/entries/freewill/)](https://plato.stanford.edu/entries/freewill/), Stanford Encylopedia of Philosophy (Retrieved 08/30/2024)
 
 [2] Causal Determinism, [https://plato.stanford.edu/entries/determinism-causal/](https://plato.stanford.edu/entries/determinism-causal/)), Stanford Encylopedia of Philosophy (Retrieved 08/30/2024)
-
+[3] Moreland J and Craig W, _Philosophical Foundations for a Christian Worldview_, 2nd Ed, InterVarsity Press, IL 2017
 
 ## Appendix: A Mathematical Approach to Disambiguation
-**Definition[Determinism, see [2]]**
+**Definition 1 [Determinism, see [2]]**
 
 Determinism is the governing property of a world if and only if, given a specified way things are at a time $t$, the way things go thereafter is fixed as a matter of natural law.
 
 To proceed, we start by establishing some notation. 
 - Let an individual $I$ at time $t$ be subject to an environment (including history up to $t$) be $\mathbb E_t$. Indeed it is follows naturally that $\mathbb E_s \subset \mathbb E_t$ for $s\le t$. 
 We define $\mathbb E = \displaystyle\bigcup_{t\in \R_+} \mathbb E_t$. 
-- Let $\mathbb W_t$ be the universe of 'will'/decision that an individual can exercise at time $t$. We will later endow $\mathbb W_t$ with a sigma algebra, $\Sigma_t$ and (probability) measure $\mathbb P$, i.e. $(\mathbb W_t, \Sigma_t, \mathbb P_t)$. Similarly, we define $\mathbb W := \displaystyle\bigcup_{t\in \R_+} \mathbb W_t$
+- Let $\mathbb W_t$ be the universe of 'will'/decision that an individual can exercise at time $t$. We will later endow $\mathbb W_t$ with a sigma algebra, $\Sigma^{\mathbb W_t}$ and (probability) measure $\mathbb P^{\mathbb W_t}$, i.e. $(\mathbb W_t, \Sigma_t, \mathbb P^{\mathbb W_t})$. Similarly, we define $\mathbb W := \displaystyle\bigcup_{t\in \R_+} \mathbb W_t$
 
-- Let $\mathbb D_t$ represent the universe of decisions that an individual, $I$ can make at time, $t$. We will endow this set with a metric, $d_t$ resulting in the metric space, $(\mathbb D_t, d_t)$ 
+- Let $\mathbb D_t$ represent the universe of decisions that an individual, $I$ can make at time, $t$. We will endow this set with a metric, $\rho^\mathbb D_t$ resulting in the metric space, $(\mathbb D_t, \rho^\mathbb D_t)$ as well as a sigma algebra, $\Sigma^\mathbb D_t$ and (probability) measure $\mathbb P_t^\mathbb D$, resulting in a probability measure space $(\mathbb D_t, \Sigma_t, \mathbb P^{\mathbb D_t})$. Again, we define $\mathbb D := \displaystyle \bigcup_{t\in \R_+}\mathbb D_t$. 
+- Let $\mathbb A_t$ be the set of all actions (typically as a result of a decision at $t$). We will endow this set with a metric, $\rho^\mathbb A_t$ resulting in the metric space, $(\mathbb A_t, \rho^\mathbb A_t)$ as well as a sigma algebra, $\Sigma^\mathbb W _t$ and (probability) measure $\mathbb P_t^\mathbb A$, resulting in a probability measure space $(\mathbb A_t, \Sigma_t, \mathbb P_t)$ Again, we define $\mathbb A := \displaystyle \bigcup_{t\in \R_+}\mathbb A_t$. 
+
 
  We call the function:
 $$
-\Delta^I : \R_+\times \mathbb E_t \times \mathbb W_t \to (\mathbb D, d)
-$$
-
-**Definition[Free will]**
-
-
-
-
-$\varepsilon(t) \equiv \varepsilon(t, \{\varepsilon(s)\}_{s<t})$
-
-An easy way of clarifying this position would be to note that if $\alpha^{\mathcal I}(E, \omega)$ is the decision/action of an individual $\mathcal I$ subject to environment $E$ and where the strength of the free-will of the individual is $\omega$, then a mathematical statement of lack of free will will be:
-$$
 \begin{align}
-\alpha^{\mathcal I}(E_1, \omega) &\ne \alpha^{\mathcal I}(E_2, \omega), \,\,\forall\, \omega, \text{ and }  E_1\ne E_2\\
-\alpha^{\mathcal I}(E, \omega_1) &= \alpha^{\mathcal I}(E, \omega_2) \,\, \forall\, E, \text{ and } \omega_1 \ne \omega_2
+\Delta^I : \R_+& \to \mathcal F(\mathbb E \times \mathbb W , \mathbb D)\\
+               t & \mapsto  \delta_t^I(\cdot, \cdot) : \mathbb E_t \times \mathbb W_t\to \mathbb D_t 
 \end{align}
 $$
-The expression (1) says that even with the same level of free will, different environments will lead to different decisions/outcomes while  (2) asserts that given an environment prior to decision/action, the level of free-will has no impact on the decision.
+where $\mathcal F(\mathbb E \times \mathbb W , \mathbb D)$ is the function space of all functions from $\mathbb E \times \mathbb W$ to $\mathbb D$, the _the decision function_
 
+**Definition 2 [Precise Free Will Set]**
+
+The set defined as:
+$$
+\begin{align}
+\mathbb W_t^{I,\text{c-free}} := \Big\{\ \omega \in \mathbb W_t \big| \exists \,\omega' \in \mathbb W_t/\{\omega\} \, : \,\forall \varepsilon \in \mathbb E_t, \,\, \delta^I_t(\varepsilon, \omega')\ne \delta^I_t(\varepsilon, \omega)\Big\}
+\end{align}
+$$
+is called the _precise/certain free will set_. If $\mathbb W_t^I \ne \emptyset$, we say $I$ has free will with respect to the decision problem at time $t$. Otherwise, $I$ has no such free will.
+
+We expatiate on this defintion below:
+- The precise free will set is the subset of possible mental postures of an individual for which given an environment at the time of decision, the actual decision is different **for different postures**
+  - If this set is non-empty, it means different decisions are certainly possible i.e. with probability 1. 
+  - If this set is empty, it implies decision is fixed i.e. there is no set of the individuals agency for which the decision would differ.
+- For actions that already occured, the assertion of a precise free will set is by defnition a counterfactual.
+
+Next we motivate a probabilistic view of these ideas thusly:
+
+Given an environment $\varepsilon^I_t$ of $I$ at time $t$, recall that:
+$$
+\delta^I_t(\varepsilon_t, \cdot) : \mathbb W_t \to \mathbb D
+$$
+
+Now we endow, $\mathbb W_t$ with the sigma algebra as noted above and $\mathbb D_t$ with the sigma algebra $\Sigma_t^\mathbb D$
+
+ **Definition 3 [Probabilistic Free Will Set]**
+
+The set defined as:
+$$
+\begin{align}
+\mathbb W_t^I := \Big\{\ \omega \in \mathbb W_t \big| \exists \,\omega' \in \mathbb W_t/\{\omega\} \, : \,\forall \varepsilon \in \mathbb E_t, \,\, \delta^I_t(\varepsilon, \omega')\ne \delta^I_t(\varepsilon, \omega)\Big\}
+\end{align}
+$$
+is called the _certainty free will set_. If $\mathbb S_t^I \ne \emptyset$, we say $I$ has free will with respect to the decision problem at time $t$. Otherwise, $I$ has no such free will.
+
+We expatiate on this defintion below:
+- The precise free will set is the subset of possible mental postures of an individual for which given an environment at the time of decision, the actual decision is different **for different postures**
+   - If this set is non-empty, it means different decisions are certainly possible i.e. with probability 1. 
+  - If this set is empty, it implies decision is fixed i.e. there is no set of the individuals agency for which the decision would differ.
+
+  
+
+Dennet vs Sapolsky:
+- Can $I$ make choices
+- Are choices made by $I$ or "made for"  $I$?
+- Both positions are consistent with $\omega$ being influenced by environment. Difference is that of whether given an individual and environment, actions are deterministic. For historical occurences, this is a counterfactual.
+
+
+Mathematically, Sapolsky's position is essentially that for all individuals and all time, any state of the will is completely exogenous i.e. $\mathbb 
