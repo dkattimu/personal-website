@@ -35,16 +35,16 @@ const { frontmatter } = Astro.props;
     <body class=`items-stretch dark:text-white  min-h-screen`>
         <Header />
         <div
-            class="prose max-w-none ml-20 mt-10 mb-20 mr-20 dark:text-white font-serif text-lg"
+            class="relative prose max-w-none ml-20 mt-10 mb-20 mr-20 dark:text-white font-serif text-lg"
         >
-            <h1 class="text-3xl text-center uppercase text-rose-500">
+            <h1 class="sticky top-0  text-3xl text-center uppercase text-rose-500">
                 {frontmatter.title}
             </h1>
             <h1 class="text-sm text-center dark:text-white">
                 by {frontmatter.author}
             </h1>
             <article
-                class="prose max-w-none prose-a:text-green-400 dark:prose-headings:text-rose-300 dark:text-white dark:prose-p:text-white dark:prose-strong:text-white"
+                class="prose pt-10 max-w-none prose-a:text-green-400 dark:prose-headings:text-rose-300 dark:text-white dark:prose-p:text-white dark:prose-strong:text-white"
             >
                 <slot/>
             </article>
