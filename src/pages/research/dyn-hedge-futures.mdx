@@ -1,0 +1,56 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: Dynamic Delta Hedging  
+author: Dodzi Attimu
+description: Is free will a thing or just a figment of our misguided imaginations
+---
+## Introduction
+Hedging of a contingent claim, $\mathcal X$ can be defined as mechanism of enshuring the claim can be met met when it comes due. Let the value of the claim 
+
+## Preliminaries
+We start with an underlying probability space $(\Omega, \mathcal F, \mathbb P)$ endowed with the filteration $\mathcal F_k$ which is increasing in $k$. Consider an economy with $n+1$ assets, $S_k(\omega) :=\Big(S^{0}_k(\omega), \cdots, S^{n}_k(\omega)\Big)$ 
+Consider a liability whose value at time $t$ along a path (state of the world $\omega$) and depends on a number of $n$ variables, $\bold X(\omega) :=\big(X^1_t(\omega), \cdots, X^n_t(\omega)\big)$. 
+Let the liability be defined as a function:
+$$
+\begin{aligned}
+L : \R^{n+1}& \to \R\\
+  (t, X^1, \cdots, X^n) &\mapsto  L(t, \bold X) 
+\end{aligned}
+$$
+We will typically drop the dependence on $\omega$ and $t$ 
+
+## Evolution of A Portfolio
+Consider $k$ to be time prior to rebalancing and $k^+$ the time of rebalancing.
+Recall that the strategy $\varphi_k \in \mathcal F_{k-1}$, whereas $S_k(\omega)\in\mathcal F_k$
+
+## Example: A Call on an underlying $S$
+Consider a dealer that writes an European call with value $V(t)$ at time $t$. 
+Assume the dealer receives the premium, $V(t_0)$ where, $t_0=0$ is initiation of said contract. The dealer sets up a dynamic hedge strategy as follows:
+
+1. Invest the premium in a fixed income portfolio earnning $r^\xi(t,\omega)$. 
+ 
+   - Enter into a futures contract ($0$ cost) with notional $\Delta^V_F(0)$ in future on $S$, $F_S$
+2. At next time step, $t_1$ rebalance portfolio to hold $V(t_1,\omega)$ in fixed income portfolio.  
+   - Enter into a futures contract ($0$ cost) with notional $\Delta^V_F(t_1, \omega)$ in future on $S$, $F_S$
+   - Calculate the hedge portfolio G/L by subtracting the hedge brought forward from rebalanced position
+
+3. Repeat 2 until expiry
+
+Let $H^\xi$ represent the value of the hedge portfolio then we have:
+$$
+\begin{align}
+H^\xi(t_0, \omega) &:=V(t_0, \omega)\\
+H^\xi(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_1}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_1)}\\
+H^\xi(t_1, \omega) &:= V(t_1, \omega)\\
+\Delta H^\xi(t_1, \omega)& := H^\xi(t_1, \omega)- H^\xi(t_1^-, \omega)\\
+ &= V(t_1, \omega) - \Big[ V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_1}+ \Delta^V_F(t_0, \omega)\Delta F_S(t_1)\Big]\\
+ &\vdots\\
+H^\xi(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_k}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_k)}\\
+H^\xi(t_k, \omega) &:= V(t_k, \omega)\\
+\Delta H^\xi(t_k, \omega)& := H^\xi(t_k, \omega)- H^\xi(t_k^-, \omega)\\
+ &= V(t_k, \omega) - \Big[ V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k}}+ \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_k)\Big]\\
+ 
+\end{align}
+$$
+
+Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, the payoff of the contingent claim.
