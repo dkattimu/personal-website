@@ -36,9 +36,11 @@ Assume the dealer receives the premium, $V(t_0)$ where, $t_0=0$ is initiation of
 
 3. Repeat 2 until expiry
 
-Let $H^\xi$ represent the value of the hedge portfolio then we have:
+Let $H^\xi$ [^xi] represent the value of the hedge portfolio then we have:
+
+[^xi]: We use superscript $\xi$ to incidcate dependence on the funding/earned rate of the portfolio. In a situation where an insurance company is the hedger e.g. based on RILA or FIA index creding liability, the ability to fund at a higher rate is important. 
 $$
-\begin{align}
+\begin{aligned}
 H^\xi(t_0, \omega) &:=V(t_0, \omega)\\
 H^\xi(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_1}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_1)}\\
 H^\xi(t_1, \omega) &:= V(t_1, \omega)\\
@@ -50,7 +52,13 @@ H^\xi(t_k, \omega) &:= V(t_k, \omega)\\
 \Delta H^\xi(t_k, \omega)& := H^\xi(t_k, \omega)- H^\xi(t_k^-, \omega)\\
  &= V(t_k, \omega) - \Big[ V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k}}+ \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_k)\Big]\\
  
-\end{align}
+\end{aligned}
 $$
 
 Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, the payoff of the contingent claim.
+
+**Remark**
+
+  1. This hedging is purely first order and in addition ensures that after each rebalance step, the hedge portfolio matches the value of the short contingent claim position of the hedger
+
+  2. The hedger makes money at $t_k$ along the path, $\omega$ if the hedge brought forward is more than the value of the claim, i.e. $\Delta H^\xi(t_k, \omega) > 0$.
