@@ -5,4 +5,4 @@ const ThemeSettings = {
 
 
 
-export{ThemeSettings}
+export {ThemeSettings}

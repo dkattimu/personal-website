@@ -1,16 +1,28 @@
 ---
-layout: ../../layouts/BlogPostLayout.astro
+layout: ../../layouts/ResearchPostLayout.astro
 title: Dynamic Hedging  
-author: Dodzi Attimu
+author: Dodzi Attimu with Siegfried Anyomi
 date: 09/20/2024
-description: Is free will a thing or just a figment of our misguided imaginations
+revised_date: 
+description: Dynamic Hedging with only Elementary Mathematics
+abstract: We recast the dynamic hedging of contingent claim using only elementary multivariate calculus. This concept applies generally to any liability e.g. reserves, capital requirement, etc. whose valuation is sensitive to observable and tradeable variables. We then tease a framework for a class of financial contracts that dispense of model-dependent specifications of financial variables that should be of interest to both financial and non-financial institutions for direct model-independent hedging of their liabilities.
 ---
 ## Introduction
 Hedging of a contingent claim, $\mathcal X$ can be defined as mechanism of enshuring the claim can be met met when it comes due. In this article we illustrate how the Taylor series expansion of a function (representing the value of this contingent claim) is sufficient to illustrate the process without an explicit model for the economic variables e.g. interest rates, equity market etc. 
+The literature addresses the concept of dynamic hedging using the concept of replicating portfolios: A portfolio of assets that match the value of the contingent claim at initiation and is rebalanced to clain expiry without any net infussion/exfussion of cash.[^self-fin]
+
+[^self-fin]: These concepts can be rigorously defined in terms of measure theory (See [2]) but we stick to what the formality means in practical terms here.
+
+However, we show below that the idea requires nothing more than multivariate calculus. In this note, we recall the Taylor expansion of a multivariate function, outline an "operational formulation" of dynamic dynamic hedging. We note that we do lose some of the stronger results like pricing equations etc. However, in practical terms, dynamic hedging doesn't require the more advanced concepts (for example see [2]) [^advanced]
+
+[^advanced]: These concepts are important nonetheless, just not required to have a working technical knowledge of the process.
+
+We believe there is a trade-off between mathematical rigor and operational considerations. In this regard, this work naturally pre-empts a class of contingent contracts which we will follow-up with in a sequel to this note.
 
 ## Preliminaries
-We start with an underlying probability space $(\Omega, \mathcal F, \mathbb P)$ endowed with the filteration $\mathcal F_k$ which is increasing in $k$. Consider an economy with $n+1$ assets, $\bold X(t, \omega) :=\Big(X^{0}(t, \omega), \cdots, X^{n}(t, \omega)\Big)$. Consider a contingent claim whose value at time $t$ along a path (state of the world $\omega$) and depends on a $\bold X$. 
+We use the $\omega$ to represent the path/scenario of each variable. [^prob] Consider an economy with $n+1$ assets, $\bold X(t, \omega) :=\Big(X^{0}(t, \omega), \cdots, X^{n}(t, \omega)\Big)$. Consider a contingent claim whose value at time $t$ along a path (state of the world $\omega$) and depends on a $\bold X$. 
 Let the liability be defined as a function:
+[^prob]: We are keeping notation that is suggestive of stochastic calculus on a measure space $(\Omega, \mathbb P, \mathcal F)$, with $\omega\in \Omega$, but stres that this background is not required in this note. It's utility is clarify the path-dependence of dynamic hedging. Indeed, similar in spirit to how [1] develops Ito calculus without probability theory based on the work by F$\"\text{o}$ llmer, we are attempting here to illustrate dynamic hedging without any reference to stochastic calculus.
 $$
 \begin{aligned}
 V: \R^{n+1}& \to \R\\
@@ -21,39 +33,46 @@ We will typically drop the dependence on $\omega$ and $t$. We will not impose an
 
 [^conditions]: We are waving our hands here to avoid going into further technical details.
 
-Then 
+then
 $$
 \begin{aligned}
-V\big(t+\Delta t, \bold X(t+\Delta t,\omega)\big)& = V\big(t, \bold X(t, \omega)\big) +\partial_t V\big(t, X(t, \omega))\Delta t +\nabla_{\bold X}V\big(t,\bold X(t, \omega)\big)\cdot \Delta \bold X(t, \omega) +\\
+V\big(t+\Delta t, \bold X(t+\Delta t,\omega)\big)& = V\big(t, \bold X(t, \omega)\big) +\partial_t V\big(t, X(t, \omega))\Delta t +\nabla_{\bold X}V\big(t,\bold X(t, \omega)\big)\cdot \Delta \bold X(t, \omega) \\
   \,\,\,\, &\,\,\, + \frac{1}{2}\partial^2 _{X^i X^j}V\big(t,\bold X(t, \omega)\big)\Delta X^i(t, \omega)\Delta X^j(t, \omega) + \cdots
 \end{aligned}
 $$
 From which we have 
 $$
+\begin{equation}
 \begin{aligned}
-\underbrace{V\big(t+\Delta t, \bold X(t+\Delta t,\omega)\big)-V\big(t, \bold X(t, \omega)\big)} _{\Delta V(t, \bold X)}& =  \partial_t V\big(t, X(t, \omega))\Delta t +\nabla_{\bold X}V\big(t,\bold X(t, \omega)\big)\cdot \Delta \bold X(t, \omega) +\\
+\underbrace{V\big(t+\Delta t, \bold X(t+\Delta t,\omega)\big)-V\big(t, \bold X(t, \omega)\big)} _{\Delta V(t, \bold X(t, \omega))}& =  \partial_t V\big(t, X(t, \omega))\Delta t +\nabla_{\bold X}V\big(t,\bold X(t, \omega)\big)\cdot \Delta \bold X(t, \omega) \\
   \,\,\,\, &\,\,\, + \frac{1}{2}\partial^2 _{X^i X^j}V\big(t,\bold X(t, \omega)\big)\Delta X^i(t, \omega)\Delta X^j(t, \omega) + \cdots
 \end{aligned}
+\end{equation}
 $$
-It is easy to see that:
+Using the principle of telescoping sums we have:
 $$
-\begin{aligned}
-V\big(T, \bold X(T, \omega)\big)- V\big(t, \bold X(t, \omega)\big)=\sum _{j=1}^n \Big[V\big(t+j\Delta t,\bold X(t +j\Delta t, \omega) \big) - V\big(t+(j-1)\Delta t,\bold X(t +\Delta t, \omega) \big)\Big]
-\end{aligned}
+\begin{align}
+V\big(T, \bold X(T, \omega)\big)- V\big(t, \bold X(t, \omega)\big)=\sum _{j=1}^n \Big[V\big(t_j,\bold X(t_j, \omega) \big) - V\big(t_{j-1},\bold X(t_{j-1}, \omega) \big)\Big]
+\end{align}
 $$
-
-where $\,n\Delta t = T-t$.
+where $\, t_j := t+ (j-1)\Delta t$ and $\,n\Delta t = T-t$.
 This  leads us to the following formulation that is suggestive of the concept of dynamic hedging:
 $$
 \begin{align}
-V\big(T, \bold X(T, \omega)\big)=V\big(t, \bold X(t, \omega)\big) + \sum _{j=1}^n \Delta V\Big(t+(j-1)\Delta t, \bold X\big(t +(j-1)\Delta t, \omega\big)\Big)
+V\big(T, \bold X(T, \omega)\big) &= V\big(t, \bold X(t, \omega)\big) + \sum _{j=1}^n \Delta V\Big(t_j, \bold X\big(t_j, \omega\big)\Big) 
 \end{align}
 $$
 
-## Dynamic Hedge Portfolio
-Consider $k$ to be time prior to rebalancing and $k^+$ the time of rebalancing.
-Recall that the strategy $\varphi_k \in \mathcal F_{k-1}$, whereas $S_k(\omega)\in\mathcal F_k$
-From Equation 1, We have that hedging a contract with value $V(t, \bold X(t, \omega))$ at inception is equivalent to setting up a portfolio with starting value $V(t, \bold X(t, \omega))$ plus contracts that replicate the change in value of the contingent claim, i.e. $\Delta F$
+## Dynamic Hedging Without Stochastic Calculus
+From Equation $(2)$, we can see that hedging a contract with value $V(t, \bold X(t, \omega))$ at inception is equivalent to setting up a portfolio with starting value $V(t, \bold X(t, \omega))$ plus contracts that replicate the change in value of the contingent claim, i.e. $\Delta V$.
+
+Now consider a contract issued at $t_0 = t$ and expiring at $t_n = T$. Next let the partition, $\tau^{(n)} := \big\{t_j | 0\le j \le n\big\}$ represent the time steps of rebalancing the hedging portfolio. We make the following observations:
+1. At time $t_j$, $V\big(t_j, X(t_j, \omega)\big)$ is known using some estimation/valuation approach. In the most general sense, it would be estimated via monte-carlo simulation.
+
+2. At the next time step, $t_j$, the hedger's portfolio should have value of $V(t_{j+1}, \bold X)$ Together with a strategy to rebalance at $t_{j+1}$, the future value, $V\big(t_{j+1}, X(t_{j+1}, \omega)\big)$ is unknown. However, provided $\bold X(t_j, \omega)$ represents tradeable assets, there is enough information to set up a portfolio that changes (at least approximately) in same magnitude as the contract /claim being hedged.
+
+3. The tradeable assets required are (ideally) contracts whose payoffs constitute differences in underlyings as well as the combinations of their products.
+
 
 ## Application: A Call on an underlying $S$
 We next illustrate the principle above to hedging of only the first order sensitivity with respect to the underlying variables. Note that this means we are not hedging sensitivity to time (decay) nor second order sensitivities.
@@ -70,7 +89,7 @@ Assume the dealer receives the premium, $V(t_0)$ where, $t_0=0$ is initiation of
 
 3. Repeat 2 until expiry
 
-Let $H^\xi$ [^xi] represent the value of the hedge portfolio then we have:
+Let $H^\xi$ [^xi] represent the value of the hedge portfolio. Consequently, 
 
 [^xi]: We use superscript $\xi$ to incidcate dependence on the funding/earned rate of the portfolio. In a situation where an insurance company is the hedger e.g. based on RILA or FIA index creding liability, the ability to fund at a higher rate is important. 
 $$
@@ -95,4 +114,12 @@ Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, t
 
   1. This hedging is purely first order and in addition ensures that after each rebalance step, the hedge portfolio matches the value of the short contingent claim position of the hedger
 
-  2. The hedger makes money at $t_k$ along the path, $\omega$ if the hedge brought forward is more than the value of the claim, i.e. $\Delta H^\xi(t_k, \omega) > 0$.
+  2. The hedger makes money at $t_k$ along the path, $\omega$ if the hedge brought forward is more than the value of the claim, i.e. $\Delta H^\xi(t_k, \omega) < 0$.
+
+  3. The above approach utilizes approximations to the change in value of the contingent claim using only a first order sensitivity, $\Delta^V_F (t, \omega)$, utilizing existing financial contracts, Futures that cost nothing at inception [^margin].
+  
+  [^margin]: We note that there are so-called margin requirements for these that we are excluding to simplify the analysis. Consequently, the analysis could be construed subject to additional margin requirements for completeness in situations where that is required.
+  ## References
+  [1] Sonderman D,  _Introduction to Stochastic Calculus for Finance_, Springer Velag, Berlin Heidelber, 2007.
+
+  [2] Delbaen F & Schachermayer W, _The Mathematics of Arbitrage_, Springer Velag, Berlin Heidelberg, 2010.
