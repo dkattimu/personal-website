@@ -1,29 +1,63 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: Dynamic Delta Hedging  
+title: Dynamic Hedging  
 author: Dodzi Attimu
+date: 09/20/2024
 description: Is free will a thing or just a figment of our misguided imaginations
 ---
 ## Introduction
-Hedging of a contingent claim, $\mathcal X$ can be defined as mechanism of enshuring the claim can be met met when it comes due. Let the value of the claim 
+Hedging of a contingent claim, $\mathcal X$ can be defined as mechanism of enshuring the claim can be met met when it comes due. In this article we illustrate how the Taylor series expansion of a function (representing the value of this contingent claim) is sufficient to illustrate the process without an explicit model for the economic variables e.g. interest rates, equity market etc. 
 
 ## Preliminaries
-We start with an underlying probability space $(\Omega, \mathcal F, \mathbb P)$ endowed with the filteration $\mathcal F_k$ which is increasing in $k$. Consider an economy with $n+1$ assets, $S_k(\omega) :=\Big(S^{0}_k(\omega), \cdots, S^{n}_k(\omega)\Big)$ 
-Consider a liability whose value at time $t$ along a path (state of the world $\omega$) and depends on a number of $n$ variables, $\bold X(\omega) :=\big(X^1_t(\omega), \cdots, X^n_t(\omega)\big)$. 
+We start with an underlying probability space $(\Omega, \mathcal F, \mathbb P)$ endowed with the filteration $\mathcal F_k$ which is increasing in $k$. Consider an economy with $n+1$ assets, $\bold X(t, \omega) :=\Big(X^{0}(t, \omega), \cdots, X^{n}(t, \omega)\Big)$. Consider a contingent claim whose value at time $t$ along a path (state of the world $\omega$) and depends on a $\bold X$. 
 Let the liability be defined as a function:
 $$
 \begin{aligned}
-L : \R^{n+1}& \to \R\\
-  (t, X^1, \cdots, X^n) &\mapsto  L(t, \bold X) 
+V: \R^{n+1}& \to \R\\
+  (t, X^1, \cdots, X^n) &\mapsto  V(t, \bold X) 
 \end{aligned}
 $$
-We will typically drop the dependence on $\omega$ and $t$ 
+We will typically drop the dependence on $\omega$ and $t$. We will not impose any functional specification of $X$ except that $F$ is a function for which partial derivatives exist and satisfy the appropriate conditions [^conditions]
 
-## Evolution of A Portfolio
+[^conditions]: We are waving our hands here to avoid going into further technical details.
+
+Then 
+$$
+\begin{aligned}
+V\big(t+\Delta t, \bold X(t+\Delta t,\omega)\big)& = V\big(t, \bold X(t, \omega)\big) +\partial_t V\big(t, X(t, \omega))\Delta t +\nabla_{\bold X}V\big(t,\bold X(t, \omega)\big)\cdot \Delta \bold X(t, \omega) +\\
+  \,\,\,\, &\,\,\, + \frac{1}{2}\partial^2 _{X^i X^j}V\big(t,\bold X(t, \omega)\big)\Delta X^i(t, \omega)\Delta X^j(t, \omega) + \cdots
+\end{aligned}
+$$
+From which we have 
+$$
+\begin{aligned}
+\underbrace{V\big(t+\Delta t, \bold X(t+\Delta t,\omega)\big)-V\big(t, \bold X(t, \omega)\big)} _{\Delta V(t, \bold X)}& =  \partial_t V\big(t, X(t, \omega))\Delta t +\nabla_{\bold X}V\big(t,\bold X(t, \omega)\big)\cdot \Delta \bold X(t, \omega) +\\
+  \,\,\,\, &\,\,\, + \frac{1}{2}\partial^2 _{X^i X^j}V\big(t,\bold X(t, \omega)\big)\Delta X^i(t, \omega)\Delta X^j(t, \omega) + \cdots
+\end{aligned}
+$$
+It is easy to see that:
+$$
+\begin{aligned}
+V\big(T, \bold X(T, \omega)\big)- V\big(t, \bold X(t, \omega)\big)=\sum _{j=1}^n \Big[V\big(t+j\Delta t,\bold X(t +j\Delta t, \omega) \big) - V\big(t+(j-1)\Delta t,\bold X(t +\Delta t, \omega) \big)\Big]
+\end{aligned}
+$$
+
+where $\,n\Delta t = T-t$.
+This  leads us to the following formulation that is suggestive of the concept of dynamic hedging:
+$$
+\begin{align}
+V\big(T, \bold X(T, \omega)\big)=V\big(t, \bold X(t, \omega)\big) + \sum _{j=1}^n \Delta V\Big(t+(j-1)\Delta t, \bold X\big(t +(j-1)\Delta t, \omega\big)\Big)
+\end{align}
+$$
+
+## Dynamic Hedge Portfolio
 Consider $k$ to be time prior to rebalancing and $k^+$ the time of rebalancing.
 Recall that the strategy $\varphi_k \in \mathcal F_{k-1}$, whereas $S_k(\omega)\in\mathcal F_k$
+From Equation 1, We have that hedging a contract with value $V(t, \bold X(t, \omega))$ at inception is equivalent to setting up a portfolio with starting value $V(t, \bold X(t, \omega))$ plus contracts that replicate the change in value of the contingent claim, i.e. $\Delta F$
 
-## Example: A Call on an underlying $S$
+## Application: A Call on an underlying $S$
+We next illustrate the principle above to hedging of only the first order sensitivity with respect to the underlying variables. Note that this means we are not hedging sensitivity to time (decay) nor second order sensitivities.
+
 Consider a dealer that writes an European call with value $V(t)$ at time $t$. 
 Assume the dealer receives the premium, $V(t_0)$ where, $t_0=0$ is initiation of said contract. The dealer sets up a dynamic hedge strategy as follows:
 
@@ -42,15 +76,15 @@ Let $H^\xi$ [^xi] represent the value of the hedge portfolio then we have:
 $$
 \begin{aligned}
 H^\xi(t_0, \omega) &:=V(t_0, \omega)\\
-H^\xi(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_1}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_1)}\\
+H^\xi(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_0)}\\
 H^\xi(t_1, \omega) &:= V(t_1, \omega)\\
 \Delta H^\xi(t_1, \omega)& := H^\xi(t_1, \omega)- H^\xi(t_1^-, \omega)\\
- &= V(t_1, \omega) - \Big[ V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_1}+ \Delta^V_F(t_0, \omega)\Delta F_S(t_1)\Big]\\
+ &= V(t_1, \omega) - \Big[ V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\Delta F_S(t_1)\Big]\\
  &\vdots\\
-H^\xi(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_k}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_k)}\\
+H^\xi(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_{k-1})}\\
 H^\xi(t_k, \omega) &:= V(t_k, \omega)\\
 \Delta H^\xi(t_k, \omega)& := H^\xi(t_k, \omega)- H^\xi(t_k^-, \omega)\\
- &= V(t_k, \omega) - \Big[ V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k}}+ \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_k)\Big]\\
+ &= V(t_k, \omega) - \Big[ V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_{k-1})\Big]\\
  
 \end{aligned}
 $$
