@@ -5,7 +5,7 @@ author: Dodzi Attimu with Siegfried Anyomi
 date: 09/20/2024
 revised_date: 09/21/2024
 description: Dynamic Hedging with only Elementary Mathematics
-abstract: In this short note, we argue that elementary multivariate calculus is sufficient to formalize the operationally the dynamic hedging of a contingent claim. Indeed, this concept applies generally to any liability e.g. reserves, capital requirement, etc. whose valuation is sensitive to observable and tradeable variables. We then tease a framework for a class of financial contracts that dispense of model-dependent specifications of financial variables that simplify the operation of dynamic hedging programs of interest to both financial and non-financial institutions.
+abstract: In this short note, we argue that elementary multivariate calculus is sufficient to formalize the operationally the dynamic hedging of a contingent claim. Indeed, this concept applies generally to any liability e.g. reserves, capital requirement, etc. whose valuation is sensitive to observable and tradeable variables. We then tease a theoretical and operational framework for a class of financial contracts that dispense of model-dependent specifications of financial variables that simplify the operation of dynamic hedging programs of interest to both financial and non-financial institutions.
 
 ---
 ## Introduction
@@ -126,7 +126,7 @@ Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, t
   
   [^margin]: We note that there are so-called margin requirements for these that we are excluding to simplify the analysis. Consequently, the analysis could be construed subject to additional margin requirements for completeness in situations where that is required.
 
-As noted in the previous section, the accuracy/effectiveness of a delta hedge increases with order of taylor approximation inherent in the program. First order (aka delta) hedging is the most feasible, but is is subject to more hedging error. This is the inspiration for the class of financial instruments that we will propose in a sequel to this note.
+As noted in the previous section, the accuracy/effectiveness of a delta hedge increases with order of taylor approximation inherent in the program. First order (aka delta) hedging is the most feasible, but is is subject to more hedging error. This is the inspiration for the class of financial instruments that we will propose in a sequel to this note. These contracts though would require models of the underlying, their payoffs are purely observable, model-independent and support model-agnostic hedging. This also supports more robust modeling of financials of institutions with structured derivatives e.g. insurance companies in the annuity space.
 
 
   ## References
