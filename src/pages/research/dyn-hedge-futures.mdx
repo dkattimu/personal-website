@@ -3,9 +3,10 @@ layout: ../../layouts/ResearchPostLayout.astro
 title: Dynamic Hedging  
 author: Dodzi Attimu with Siegfried Anyomi
 date: 09/20/2024
-revised_date: 
+revised_date: 09/21/2024
 description: Dynamic Hedging with only Elementary Mathematics
-abstract: We recast the dynamic hedging of contingent claim using only elementary multivariate calculus. This concept applies generally to any liability e.g. reserves, capital requirement, etc. whose valuation is sensitive to observable and tradeable variables. We then tease a framework for a class of financial contracts that dispense of model-dependent specifications of financial variables that should be of interest to both financial and non-financial institutions for direct model-independent hedging of their liabilities.
+abstract: In this short note, we argue that elementary multivariate calculus is sufficient to formalize the operationally the dynamic hedging of a contingent claim. Indeed, this concept applies generally to any liability e.g. reserves, capital requirement, etc. whose valuation is sensitive to observable and tradeable variables. We then tease a framework for a class of financial contracts that dispense of model-dependent specifications of financial variables that simplify the operation of dynamic hedging programs of interest to both financial and non-financial institutions.
+
 ---
 ## Introduction
 Hedging of a contingent claim, $\mathcal X$ can be defined as mechanism of enshuring the claim can be met met when it comes due. In this article we illustrate how the Taylor series expansion of a function (representing the value of this contingent claim) is sufficient to illustrate the process without an explicit model for the economic variables e.g. interest rates, equity market etc. 
@@ -72,9 +73,14 @@ Now consider a contract issued at $t_0 = t$ and expiring at $t_n = T$. Next let 
 2. At the next time step, $t_j$, the hedger's portfolio should have value of $V(t_{j+1}, \bold X)$ Together with a strategy to rebalance at $t_{j+1}$, the future value, $V\big(t_{j+1}, X(t_{j+1}, \omega)\big)$ is unknown. However, provided $\bold X(t_j, \omega)$ represents tradeable assets, there is enough information to set up a portfolio that changes (at least approximately) in same magnitude as the contract /claim being hedged.
 
 3. The tradeable assets required are (ideally) contracts whose payoffs constitute differences in underlyings as well as the combinations of their products.
+4. The sensitivity of the contract to the variables dictate the positions in the underlying to hold in the hedge portfolio at $t_j$. This is rebalanced based on updated calculations at $t_{j+1}$, and so on.
 
+4. The effectiveness of the hedge is a function of the order of sensitivities used. There are both operational and efficiency considerations to the highest order of sensitivities used, with cost and precision (accuracy) of the hedging increasing respectively with higher orders of sensitivity used. The rate of increase in accuracy however reduces with increasing order of sensitivities employed.
+5. In the absence of infinite order of sensitivities (what happens in the real world), the equality in (1) is an approximation, meaning the hedge P&L will vary by path, $\omega$.
 
-## Application: A Call on an underlying $S$
+In the next section, we illustrate a practical application of such a dynamic hedging based on only first order sensitivies. This is because futures/forwards contracts exist on individual market observables. 
+
+## Application: A Delta-Hedging an Option on Underlying Using Futures
 We next illustrate the principle above to hedging of only the first order sensitivity with respect to the underlying variables. Note that this means we are not hedging sensitivity to time (decay) nor second order sensitivities.
 
 Consider a dealer that writes an European call with value $V(t)$ at time $t$. 
@@ -119,6 +125,10 @@ Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, t
   3. The above approach utilizes approximations to the change in value of the contingent claim using only a first order sensitivity, $\Delta^V_F (t, \omega)$, utilizing existing financial contracts, Futures that cost nothing at inception [^margin].
   
   [^margin]: We note that there are so-called margin requirements for these that we are excluding to simplify the analysis. Consequently, the analysis could be construed subject to additional margin requirements for completeness in situations where that is required.
+
+As noted in the previous section, the accuracy/effectiveness of a delta hedge increases with order of taylor approximation inherent in the program. First order (aka delta) hedging is the most feasible, but is is subject to more hedging error. This is the inspiration for the class of financial instruments that we will propose in a sequel to this note.
+
+
   ## References
   [1] Sonderman D,  _Introduction to Stochastic Calculus for Finance_, Springer Velag, Berlin Heidelber, 2007.
 
