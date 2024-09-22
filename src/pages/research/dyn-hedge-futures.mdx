@@ -104,12 +104,12 @@ H^\xi_F(t_0, \omega) &:=V(t_0, \omega)\\
 H^\xi_F(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_0)}\\
 H^\xi_F(t_1, \omega) &:= V(t_1, \omega)\\
 \Delta H^\xi_F(t_1, \omega)& := H^\xi_F(t_1, \omega)- H^\xi_F(t_1^-, \omega)\\
- &= V(t_1, \omega) - \Big[ V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\Delta F_S(t_1)\Big]\\
+ &= V(t_1, \omega) - V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}- \Delta^V_F(t_0, \omega)\Delta F_S(t_1)\\
  &\vdots\\
-H^\xi_F(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_{k-1})}\\
+H^\xi_F(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_{k-1},\omega)}\\
 H^\xi_F(t_k, \omega) &:= V(t_k, \omega)\\
 \Delta H^\xi_F(t_k, \omega)& := H^\xi_F(t_k, \omega)- H^\xi_F(t_k^-, \omega)\\
- &= V(t_k, \omega) - \Big[ V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_{k-1})\Big]\\
+ &= V(t_k, \omega) - V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}} - \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_{k-1},\omega)\\
  
 \end{aligned}
 $$
