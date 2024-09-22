@@ -86,41 +86,41 @@ We next illustrate the principle above to hedging of only the first order sensit
 Consider a dealer that writes an European call with value $V(t)$ at time $t$. 
 Assume the dealer receives the premium, $V(t_0)$ where, $t_0=0$ is initiation of said contract. The dealer sets up a dynamic hedge strategy as follows:
 
-1. Invest the premium in a fixed income portfolio earnning $r^\xi(t,\omega)$. 
+1. Invest the premium in a fixed income portfolio earnning $r^\xi(0,\omega)$. 
  
    - Enter into a futures contract ($0$ cost) with notional $\Delta^V_F(0)$ in future on $S$, $F_S$
-2. At next time step, $t_1$ rebalance portfolio to hold $V(t_1,\omega)$ in fixed income portfolio.  
+2. At next time step, $t_1$ rebalance portfolio to hold $V(t_1,\omega)$ in fixed income portfolio, earning now $r^\xi(t_1, \omega)$.  
    - Enter into a futures contract ($0$ cost) with notional $\Delta^V_F(t_1, \omega)$ in future on $S$, $F_S$
    - Calculate the hedge portfolio G/L by subtracting the hedge brought forward from rebalanced position
 
 3. Repeat 2 until expiry
 
-Let $H^\xi$ [^xi] represent the value of the hedge portfolio. Consequently, 
+Let $H^\xi_F$ [^xi] represent the value of the hedge portfolio. Consequently, $t_k^-$ represents an instant prior to rebalancing then:
 
-[^xi]: We use superscript $\xi$ to incidcate dependence on the funding/earned rate of the portfolio. In a situation where an insurance company is the hedger e.g. based on RILA or FIA index creding liability, the ability to fund at a higher rate is important. 
+[^xi]: We use superscript $\xi$ to incidcate dependence on the funding/earned rate of the portfolio. In a situation where an insurance company is the hedger e.g. based on RILA or FIA index creding liability, the ability to fund at a higher rate is important. Subscript indicates delta position is in futures contract on underlying.
 $$
 \begin{aligned}
-H^\xi(t_0, \omega) &:=V(t_0, \omega)\\
-H^\xi(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_0)}\\
-H^\xi(t_1, \omega) &:= V(t_1, \omega)\\
-\Delta H^\xi(t_1, \omega)& := H^\xi(t_1, \omega)- H^\xi(t_1^-, \omega)\\
+H^\xi_F(t_0, \omega) &:=V(t_0, \omega)\\
+H^\xi_F(t_1^-, \omega) &=V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\underbrace{\Big(F_S(t_1, \omega)-F_S(t_0, \omega)\Big)}_{\Delta F_S(t_0)}\\
+H^\xi_F(t_1, \omega) &:= V(t_1, \omega)\\
+\Delta H^\xi_F(t_1, \omega)& := H^\xi_F(t_1, \omega)- H^\xi_F(t_1^-, \omega)\\
  &= V(t_1, \omega) - \Big[ V(t_0, \omega)e^{r^\xi(t_0, \omega)\Delta t_0}+ \Delta^V_F(t_0, \omega)\Delta F_S(t_1)\Big]\\
  &\vdots\\
-H^\xi(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_{k-1})}\\
-H^\xi(t_k, \omega) &:= V(t_k, \omega)\\
-\Delta H^\xi(t_k, \omega)& := H^\xi(t_k, \omega)- H^\xi(t_k^-, \omega)\\
+H^\xi_F(t_k^-, \omega) &=V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\underbrace{\Big(F_S(t_k, \omega)-F_S(t_{k-1}, \omega)\Big)}_{\Delta F_S(t_{k-1})}\\
+H^\xi_F(t_k, \omega) &:= V(t_k, \omega)\\
+\Delta H^\xi_F(t_k, \omega)& := H^\xi_F(t_k, \omega)- H^\xi_F(t_k^-, \omega)\\
  &= V(t_k, \omega) - \Big[ V(t_{k-1}, \omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}+ \Delta^V_F(t_{k-1}, \omega)\Delta F_S(t_{k-1})\Big]\\
  
 \end{aligned}
 $$
 
-Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, the payoff of the contingent claim.
+where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, the payoff of the contingent claim.
 
 **Remark**
 
   1. This hedging is purely first order and in addition ensures that after each rebalance step, the hedge portfolio matches the value of the short contingent claim position of the hedger
 
-  2. The hedger makes money at $t_k$ along the path, $\omega$ if the hedge brought forward is more than the value of the claim, i.e. $\Delta H^\xi(t_k, \omega) < 0$.
+  2. The hedger makes money at $t_k$ along the path, $\omega$ if the hedge brought forward is more than the value of the claim, i.e. $\Delta H^\xi_F(t_k, \omega) < 0$.
 
   3. The above approach utilizes approximations to the change in value of the contingent claim using only a first order sensitivity, $\Delta^V_F (t, \omega)$, utilizing existing financial contracts, Futures that cost nothing at inception [^margin].
   
@@ -128,8 +128,46 @@ Where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, t
 
 As noted in the previous section, the accuracy/effectiveness of a delta hedge increases with order of taylor approximation inherent in the program. First order (aka delta) hedging is the most feasible, but is is subject to more hedging error. This is the inspiration for the class of financial instruments that we will propose in a sequel to this note. These contracts though would require models of the underlying, their payoffs are purely observable, model-independent and support model-agnostic hedging. This also supports more robust modeling of financials of institutions with structured derivatives e.g. insurance companies in the annuity space.
 
+## Appendix - Dynamic Hedging By Investing in Underlying
+The above example could be executed using the tradeable underlying (ignoring practical considerations) as follows
+Consider a dealer that writes an European call with value $V(t)$ at time $t$. 
+Assume the dealer receives the premium, $V(t_0)$ where, $t_0=0$ is initiation of said contract. The dealer sets up a dynamic hedge strategy as follows:
 
-  ## References
+1. Distribute the premium between:
+   - long position $\Delta^V_S(0)$ in underlying at a cost of $\Delta^V_S(0)S(0)$
+
+   - investment of residual premium, $\mathcal B(0) :=V(0) - \Delta^V_S(0)S(0)$ in a fixed income portfolio earnning $r^\xi(0,\omega)$. 
+ 
+2. At next time step, $t_1$ rebalance portfolio to hold $V(t_1,\omega)$ distributed as:.  
+    - long position $\Delta^V_S(t_1, \omega)$ in underlying at a cost of $\Delta^V_S(t_1,\omega)S(t_1, \omega)$
+
+   - investment of residual, $\mathcal B(t_1, \omega) :=V(t_1, \omega) - \Delta^V_S(t_1, \omega)S(t_1, \omega)$ in a fixed income portfolio earnning $r^\xi(t_1,\omega)$. 
+
+ 3. Repeat 2 until expiry
+
+Let $H^\xi_S$ represent the value of the hedge portfolio. Consequently, $t_k^-$ represents an instant prior to rebalancing then:
+
+$$
+\begin{aligned}
+H^\xi_S(t_0, \omega) &:=V(t_0)\\
+H^\xi_S(t_1^-, \omega) &=\mathcal B(t_0)e^{r^\xi(t_0)\Delta t_0} + \Delta^V_S(t_0) S(t_1, \omega) \\
+ & = V(t_0)e^{r^\xi(t_0)\Delta t_0} +  \Delta^V_S(t_0)\Big(S(t_1, \omega)-S(t_0)e^{r^\xi(t_0)\Delta t_0}\Big)\\
+H^\xi_S(t_1, \omega) &:= V(t_1, \omega)\\
+\Delta H^\xi_S(t_1, \omega)& := H^\xi_S(t_1, \omega)- H^\xi_S(t_1^-, \omega)\\
+ &= V(t_1, \omega) - V(t_0)e^{r^\xi(t_0)\Delta t_0} - \Delta^V_S(t_0)\Big(S(t_1, \omega)-S(t_0)e^{r^\xi(t_0)\Delta t_0}\Big)\\
+ &\vdots\\
+H^\xi_S(t_k^-, \omega) &= V(t_{k-1},\omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}} +  \Delta^V_S(t_{k-1}, \omega)\Big(S(t_k, \omega)-S(t_{k-1})e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}\Big)\\
+H^\xi_S(t_k, \omega) &:= V(t_k, \omega)\\
+\Delta H^\xi_S(t_k, \omega)& := H^\xi_S(t_k, \omega)- H^\xi_S(t_k^-, \omega)\\
+ &= V(t_k, \omega) - V(t_{k-1},\omega)e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}} +  \Delta^V_S(t_{k-1}, \omega)\Big(S(t_k, \omega)-S(t_{k-1})e^{r^\xi(t_{k-1}, \omega)\Delta t_{k-1}}\Big)\\
+ 
+\end{aligned}
+$$
+where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, the payoff of the contingent claim.
+
+
+
+## References
   [1] Sonderman D,  _Introduction to Stochastic Calculus for Finance_, Springer Velag, Berlin Heidelber, 2007.
 
   [2] Delbaen F & Schachermayer W, _The Mathematics of Arbitrage_, Springer Velag, Berlin Heidelberg, 2010.
