@@ -1,11 +1,11 @@
 ---
 layout: ../../layouts/ResearchPostLayout.astro
 title: Dynamic Hedging  
-author: Dodzi Attimu with Siegfried Anyomi
-date: 09/20/2024
-revised_date: 09/23/2024 
+author: Dodzi Attimu 
+date: 09/26/2024
+revised_date:
 description: Dynamic Hedging with only Elementary Mathematics
-abstract: In this short note, we argue that elementary multivariate calculus is sufficient to formalize the operationally the dynamic hedging of a contingent claim. Indeed, this concept applies generally to any liability e.g. reserves, capital requirement, etc. whose valuation is sensitive to observable and tradeable variables. We then tease a theoretical and operational framework for a class of financial contracts that dispense of model-dependent specifications of financial variables that simplify the operation of dynamic hedging programs of interest to both financial and non-financial institutions.
+abstract: In this short note, we revisiti the idea of dividend paying stocks, clarifying the option pricing formulation for total and price return indices.
 
 ---
 ## Introduction
@@ -123,7 +123,6 @@ where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, t
   2. The hedger makes money at $t_k$ along the path, $\omega$ if the hedge brought forward is more than the value of the claim, i.e. $\Delta H^\xi_F(t_k, \omega) < 0$.
 
   3. The above approach utilizes approximations to the change in value of the contingent claim using only a first order sensitivity, $\Delta^V_F (t, \omega)$, utilizing existing financial contracts, Futures that cost nothing at inception [^margin].
-  4. This hedge strategy is NOT self-financing. In other words, the conditions of self-financing replication of the option are not met under the design above, partly because the the rate at which cash accrues is not the risk-free rate
   
   [^margin]: We note that there are so-called margin requirements for these that we are excluding to simplify the analysis. Consequently, the analysis could be construed subject to additional margin requirements for completeness in situations where that is required.
 
@@ -166,11 +165,7 @@ H^\xi_S(t_k, \omega) &:= V(t_k, \omega)\\
 $$
 where $0< k\le n$, and $ t_n = T$, with $V(T, \omega) =\mathcal X(T, \omega)$, the payoff of the contingent claim.
 
-**Remark**
-- Using the underlying vs using futures can be shown to be equivalent theoretically.
-- In this strategy the delta sensitivity being hedged is any changes above/below the "risk-free" rate if $r^\xi = r$, the risk-free rate. This is what makes this hedging agnostic to the underlying equity returns. 
-  - Intuitively, we can think of the delta hedging  as a practical implementation of Girsonov's Theorem.
-  - These insights don't seem to be highlighted in texts on the topic.
+
 
 ## References
 [1] Sonderman D,  _Introduction to Stochastic Calculus for Finance_, Springer Velag, Berlin Heidelber, 2007.
